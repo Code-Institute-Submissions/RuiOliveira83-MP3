@@ -17,3 +17,7 @@ body{
 .text-heavy{
     font-weight: 500;
 }
+
+.flashes h4 {
+    line-height:2;
+}
