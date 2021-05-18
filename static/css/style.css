@@ -13,3 +13,7 @@ body{
 .sidenav.right-aligned {
     background-color: #dccdb8;
 }
+
+.text-heavy{
+    font-weight: 500;
+}
