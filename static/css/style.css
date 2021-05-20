@@ -1,5 +1,6 @@
 body{
     background-color: #dcc7aa;
+    width:auto;
 }
 
 .brand-logo {
@@ -28,4 +29,16 @@ body{
     }
 }
 
+.text-uppercase {
+    text-transform: uppercase;
+}
 
+.btn-center-align{
+    text-align: center;
+}
+
+li.cat-list {
+    display: inline-block;
+    padding-top: 5px;
+    
+}
