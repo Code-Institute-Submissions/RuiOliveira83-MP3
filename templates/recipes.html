@@ -22,18 +22,22 @@
                     {{ cat }}
                 {% endfor %} <br>
                 {{ recipe.description }}<br>
+
                 <h3>Ingredients:</h3>
-                {% for ingredient in recipe.ingredients %}
+                {% for ingredient in recipe.ingredients.splitlines() %}
                     <ul>
                         <li>{{ ingredient }}</li>
                     </ul>
                 {% endfor %}
+
                 <h3>Method:</h3>
-                {% for met in recipe.method %}
+                {% for step in recipe.method.splitlines() %}
                     <ul>
-                        <li>{{ met }}</li>
+                        <li><i class="fas fa-long-arrow-alt-right"></i> {{ step }}</li>
                     </ul>
                 {% endfor %}
+
+              
             {% endfor %}<br>
         </div>
 
