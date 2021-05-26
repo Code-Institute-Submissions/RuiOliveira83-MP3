@@ -36,7 +36,7 @@
                                     <p>{{ recipe.recipe_description }}</p>
                                 </div>
                                 <div class="card-action">
-                                    <a href="#">View Recipe</a>
+                                    <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">View Recipe</a>
                                 </div>
                             </div>
                         
