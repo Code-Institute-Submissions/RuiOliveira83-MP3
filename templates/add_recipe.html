@@ -3,11 +3,11 @@
 
     <h3 class="center-align blue-grey-text text-darken-3">Add Recipe</h3>
 
-    <div class="row card-panel grey lighten-5">
+    <div class="row card-panel brown lighten-5">
         <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
             <div class="row">
                 <div class="input-field col s10">
-                    <i class="fas fa-book prefix blue-grey-text text-darken-3"></i></i>
+                    <i class="fas fa-book prefix blue-grey-text text-darken-3"></i>
                     <input id="recipe_name" name="recipe_name" minlength="3"
                     maxlength="50" type="text" class="validate" required>
                     <label for="recipe_name">Recipe Name</label>
@@ -46,6 +46,14 @@
                     <textarea id="method" name="method" minlength="5" maxlength="1250" class="materialize-textarea validate" required></textarea>
                     <label for="method">Method</label>
                     <span class="helper-text" data-error="wrong" data-success="right">Insert one step per line</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s10">
+                    <i class="fas fa-camera-retro prefix blue-grey-text text-darken-3"></i>
+                    <input id="recipe_img" name="recipe_img" minlength="3" type="url" class="validate">
+                    <label for="recipe_img">Image</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Please provide the image url. If you don't have one you can leave it blank</span>
                 </div>
             </div>
             <div class="row center-align">

@@ -3,18 +3,50 @@
     
     <div class="row">
         <div class="col s12 m3 btn-center-align">
-            <h4>Categories:</h4>
-            <ul>
-                {% for category in categories %}
-                    <li class="cat-list">
-                        <a class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn">
-                            <span class="white-text text-uppercase">{{ category.category_name }} </span>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <div class="row">
+                <h4>Categories:</h4>
+                <ul>
+                    {% for category in categories %}
+                        <div class="col s6 m12 l12 btn-center-align">
+                            <li class="cat-list">
+                                <a class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn truncate">
+                                    <span class="white-text text-uppercase">{{ category.category_name }} </span>
+                                </a>
+                            </li>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         
+        <div class="col s12 m7">
+            <h4>Recipes:</h4>
+            {% for recipe in recipes %}
+                
+                    <div class="card horizontal brown lighten-5">
+                        
+                            <div class="card-image valign-wrapper">
+                                <img src="{{ recipe.recipe_img }}" alt="{{ recipe.recipe_name }}" class="card-image">
+                            </div>
+                        
+                        
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h4>{{ recipe.recipe_name }}</h4>
+                                    <p>{{ recipe.recipe_description }}</p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">View Recipe</a>
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+            {% endfor %}<br>
+        </div>
+
+
+
         <div class="col s12 m9">
             {% for recipe in recipes %}
                 <h2>{{ recipe.recipe_name }}</h2>
