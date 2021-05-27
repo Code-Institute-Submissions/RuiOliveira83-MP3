@@ -9,14 +9,16 @@
                 <div class="input-field col s10">
                     <i class="fas fa-book prefix blue-grey-text text-darken-3"></i>
                     <input id="recipe_name" name="recipe_name" minlength="3"
-                    maxlength="50" type="text" class="validate" required>
+                    maxlength="50" value="{{ recipe.recipe_name }}" type="text" class="validate" required>
                     <label for="recipe_name">Recipe Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s10">
                     <i class="fas fa-align-justify prefix blue-grey-text text-darken-3"></i>
-                    <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="250" class="materialize-textarea validate" required></textarea>
+                    <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="250" class="materialize-textarea validate" required>
+                        {{- recipe.recipe_description -}}
+                    </textarea>
                     <label for="recipe_description">Recipe Description</label>
                 </div>
             </div>
@@ -24,9 +26,22 @@
                 <div class="input-field col s10">
                     <i class="fas fa-pen prefix blue-grey-text text-darken-3"></i>
                     <select multiple id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Recipe's Categories: </option>
+                        <option value="" disabled>Recipe's Categories: </option>
+
+                        {% for cat in recipe.category_name %}
+                            
+
+                        
+                        {% endfor %}
+
+
+
                         {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>                        
+                            {% if category.category_name in recipe.category_name %}
+                                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option> 
+                            {% else %}
+                                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endif %}                        
                         {% endfor %}
                     </select>
                     <label for="category_name">Choose all relevant categories</label>
@@ -36,7 +51,9 @@
             <div class="row">
                 <div class="input-field col s10">
                     <i class="fas fa-shopping-basket prefix blue-grey-text text-darken-3"></i>
-                    <textarea id="ingredients" name="ingredients" minlength="5" maxlength="1000" class="materialize-textarea validate" required></textarea>
+                    <textarea id="ingredients" name="ingredients" minlength="5" maxlength="1000" class="materialize-textarea validate" required>
+                        {{- recipe.ingredients -}}
+                    </textarea>
                     <label for="ingredients">Ingredients</label>
                     <span class="helper-text" data-error="wrong" data-success="right">Insert one ingredient per line</span>
                 </div>
@@ -44,7 +61,9 @@
             <div class="row">
                 <div class="input-field col s10">
                     <i class="fas fa-list-ol prefix blue-grey-text text-darken-3"></i>
-                    <textarea id="method" name="method" minlength="5" maxlength="1250" class="materialize-textarea validate" required></textarea>
+                    <textarea id="method" name="method" minlength="5" maxlength="1250" class="materialize-textarea validate" required>
+                        {{- recipe.method -}}
+                    </textarea>
                     <label for="method">Method</label>
                     <span class="helper-text" data-error="wrong" data-success="right">Insert one step per line</span>
                 </div>
@@ -52,12 +71,15 @@
             <div class="row">
                 <div class="input-field col s10">
                     <i class="fas fa-camera-retro prefix blue-grey-text text-darken-3"></i>
-                    <input id="recipe_img" name="recipe_img" minlength="3" type="url" class="validate">
+                    <input id="recipe_img" name="recipe_img" minlength="3" value="{{ recipe.recipe_img }}" type="url" class="validate">
                     <label for="recipe_img">Image</label>
                     <span class="helper-text" data-error="wrong" data-success="right">Please provide the image url. If you don't have one you can leave it blank</span>
                 </div>
             </div>
             <div class="row center-align">
+                <a href="{{ url_for('get_recipes') }}" class="btn-large red accent-3 text-heavy text-shadow waves-effect waves-light">
+                    Cancel <i class="fas fa-times-circle right"></i>
+                </a>
                 <div class="col s12"></div>
                     <button class="btn-large orange accent-3 text-heavy text-shadow waves-effect waves-light" type="submit">
                         Edit Recipe 
