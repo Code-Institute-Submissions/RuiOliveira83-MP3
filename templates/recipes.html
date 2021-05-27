@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col s12 m3 btn-center-align">
             <div class="row">
-                <h4>Categories:</h4>
+                <h4 class="blue-grey-text text-darken-3">Categories:</h4>
                 <ul>
                     {% for category in categories %}
                         <div class="col s6 m12 l12 btn-center-align">
@@ -20,7 +20,7 @@
         </div>
         
         <div class="col s12 m7">
-            <h4>Recipes:</h4>
+            <h4 class="blue-grey-text text-darken-3">Recipes:</h4>
             {% for recipe in recipes %}
                 
                     <div class="card horizontal brown lighten-5">
@@ -31,12 +31,13 @@
                         
                         
                             <div class="card-stacked">
-                                <div class="card-content">
-                                    <h4>{{ recipe.recipe_name }}</h4>
+                                <div class="card-content ">
+                                    <h4 class="blue-grey-text text-darken-3">{{ recipe.recipe_name.capitalize() }}</h4>
                                     <p>{{ recipe.recipe_description }}</p>
                                 </div>
                                 <div class="card-action">
                                     <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">View Recipe</a>
+                                    <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">Edit Recipe</a>
                                 </div>
                             </div>
                         
