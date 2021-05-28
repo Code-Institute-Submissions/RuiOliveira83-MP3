@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('.sidenav').sidenav({edge: "right"});
     $('select').formSelect();
-
+    
     // validateMaterialize was done in the code institute module called "Materialize Form Validation"
     validateMaterializeSelect();
     function validateMaterializeSelect() {
@@ -30,4 +30,5 @@ $(document).ready(function() {
             }
         });
     }
+    $('.modal').modal();
 });
