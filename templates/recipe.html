@@ -41,9 +41,12 @@
                     {% endfor %}
                 </div>
             </div>
-            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn center-align truncate">
-                <span class="white-text text-uppercase">Edit Recipe </span>
-            </a>
+            {% if session.user|lower == recipe.added_by|lower %}
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn center-align truncate">
+                    <span class="white-text text-uppercase">Edit Recipe </span>
+                </a>
+            {% endif %}
+            
         </div>
     </div>
 

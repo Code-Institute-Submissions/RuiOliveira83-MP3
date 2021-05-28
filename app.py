@@ -59,7 +59,7 @@ def login():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            #check password
+            # check password
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     # valid password
@@ -128,6 +128,19 @@ def recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.getlist("category_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "recipe_description": request.form.get("recipe_description"),
+            "ingredients": request.form.get("ingredients"),
+            "method": request.form.get("method"),
+            "recipe_img": request.form.get("recipe_img"),
+            "added_by": session["user"]
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe Successfully Updated")
+
     recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(

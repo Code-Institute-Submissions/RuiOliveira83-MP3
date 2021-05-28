@@ -60,3 +60,7 @@ li.cat-list {
 .recipe-description{
     padding: 15px 0px;
 }
+
+.card-panel {
+    margin-top: 14px;
+}
