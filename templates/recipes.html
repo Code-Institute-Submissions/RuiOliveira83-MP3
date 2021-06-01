@@ -44,12 +44,16 @@
                 {% for recipe in recipes %}
                     <div class="card horizontal brown lighten-5">
                         <div class="card-image valign-wrapper">
+                            {% if recipe.recipe_img == "" %}
+                            <img src="https://images.theconversation.com/files/307440/original/file-20191217-58292-nlmvmh.jpg" alt="{{ recipe.recipe_name }}" class="card-image">
+                            {% else %}
                             <img src="{{ recipe.recipe_img }}" alt="{{ recipe.recipe_name }}" class="card-image">
+                            {% endif %}
                         </div>
                         <div class="card-stacked">
                             <div class="card-content ">
                                 <h4 class="blue-grey-text text-darken-3">{{ recipe.recipe_name.capitalize() }}</h4>
-                                <p>{{ recipe.recipe_description }}</p>
+                                <p>{{ recipe.recipe_description.capitalize() }}</p>
                             </div>
                                 <div class="card-action">
                                     <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">View Recipe</a>
