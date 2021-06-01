@@ -64,3 +64,17 @@ li.cat-list {
 .card-panel {
     margin-top: 14px;
 }
+
+.cat-card {
+    font-size: x-large;
+    font-weight: 400;
+}
+
+.modal-new-cat {
+    padding: 15px 15px 5px !important;
+    width: 90%;
+}
+
+.btn-left-margin{
+    margin-left: 20px !important;
+}
