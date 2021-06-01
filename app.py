@@ -21,7 +21,16 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
-    recipes = mongo.db.recipes.find()
+    recipes = list(mongo.db.recipes.find())
+    categories = mongo.db.categories.find()
+    return render_template(
+        "recipes.html", recipes=recipes, categories=categories)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     categories = mongo.db.categories.find()
     return render_template(
         "recipes.html", recipes=recipes, categories=categories)
@@ -173,6 +182,7 @@ def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
     return redirect(url_for("get_categories"))
+
 
 
 if __name__ == "__main__":
