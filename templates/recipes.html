@@ -2,6 +2,8 @@
 {% block content %}
     
 <h3 class="blue-grey-text text-darken-3 center-align">Our Recipes</h3>
+
+    <!-- search bar -->
     <div class="row card-panel grey lighten-5">
         <form action="{{ url_for('search') }}" method="post" class="col s12">
             <div class="row valign-wrapper center-align">
@@ -22,27 +24,34 @@
 
 
     <div class="row">
+        <!-- categories -->
         <div class="col s12 m3 btn-center-align">
             <div class="row">
                 <h4 class="blue-grey-text text-darken-3">Categories:</h4>
                 <ul>
+                    <!-- for loop to show all the categories -->
                     {% for category in categories %}
                         <div class="col s6 m12 l12 btn-center-align">
                             <li class="cat-list">
-                                <a class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn truncate">
+                                <a href="{{ url_for('category_search', category_name=category.category_name) }}" class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn truncate">
                                     <span class="white-text text-uppercase">{{ category.category_name }} </span>
                                 </a>
+                                
                             </li>
                         </div>
                     {% endfor %}
                 </ul>
             </div>
         </div>
+        <!-- Recipes -->
+        <!-- If statement assuring that we have a recipe to show -->
         {% if recipes|length > 0 %}
-            <div class="col s12 m7">
+            <div class="col s12 m9">
                 <h4></h4>
                 {% for recipe in recipes %}
+                <!-- Card showing a recipe -->
                     <div class="card horizontal brown lighten-5">
+                        <!-- image. If the user didn't added a image it will show a generic image -->
                         <div class="card-image valign-wrapper">
                             {% if recipe.recipe_img == "" %}
                             <img src="https://images.theconversation.com/files/307440/original/file-20191217-58292-nlmvmh.jpg" alt="{{ recipe.recipe_name }}" class="card-image">
@@ -52,13 +61,16 @@
                         </div>
                         <div class="card-stacked">
                             <div class="card-content ">
+                                <!-- Recipe name -->
                                 <h4 class="blue-grey-text text-darken-3">{{ recipe.recipe_name.capitalize() }}</h4>
                                 <p>{{ recipe.recipe_description.capitalize() }}</p>
                             </div>
                                 <div class="card-action">
+                                    <!-- Link to the recipe's page -->
                                     <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">View Recipe</a>
-                                    {% if session.user|lower == recipe.added_by|lower %}
-                                        <!-- Modal Trigger -->
+                                    <!-- If statement to ensure only the creator or the admin of the recipe can delete/edit it -->
+                                    {% if (session.user|lower == recipe.added_by|lower or session.user|lower == "admin"|lower) %}
+                                        <!-- Modal Trigger - Delete message. This will allow the user to check if he really wants to delete the recipe -->
                                         <a class="modal-trigger" href="#modal1">Delete Recipe</a>
                                         <!-- Modal Structure -->
                                         <div id="modal1" class="modal">
@@ -71,6 +83,7 @@
                                                 <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="modal-close waves-effect waves-green btn-flat">Delete Recipe</a>
                                             </div>
                                         </div>
+                                        <!-- Edit recipe -->
                                         <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit Recipe</a>
                                     {% endif %}
                                 </div>
@@ -79,6 +92,7 @@
                     
                 {% endfor %}<br>
             </div>
+        <!-- else statment for when we don't have a recipe to show -->
         {% else %}
         <h4 class="blue-grey-text text-darken-3">No results found</h4>
         {% endif %}

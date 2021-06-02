@@ -9,7 +9,7 @@
             {% for category in recipe.category_name %}
                         <div class="col">
                             <!-- <li class="cat-list"> -->
-                                <a class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn truncate">
+                                <a href="{{ url_for('category_search', category_name=category) }}" class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn truncate">
                                     <span class="white-text text-uppercase">{{ category }} </span>
                                 </a>
                             <!-- </li> -->

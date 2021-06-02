@@ -36,6 +36,15 @@ def search():
         "recipes.html", recipes=recipes, categories=categories)
 
 
+@app.route("/category_search/<category_name>")
+def category_search(category_name):
+    recipes = list(mongo.db.recipes.find(
+        {"$text": {"$search": category_name}}))
+    categories = list(mongo.db.categories.find())
+    return render_template(
+        "recipes.html", recipes=recipes, categories=categories)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
