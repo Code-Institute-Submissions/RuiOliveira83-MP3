@@ -47,6 +47,7 @@ def category_search(category_name):
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    categories = mongo.db.categories.find()
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -65,8 +66,8 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
-    return render_template("register.html")
+        return redirect(url_for("myrecipes", username=session["user"]))
+    return render_template("register.html", categories=categories)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -85,7 +86,7 @@ def login():
                     flash("Welcome, {}".format(
                         request.form.get("username").capitalize()))
                     return redirect(url_for(
-                        "profile", username=session["user"]))
+                        "myrecipes", username=session["user"]))
             else:
                 # invalid password
                 flash("Incorrect Username and/or Password")
@@ -99,15 +100,15 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/myrecipes/<username>", methods=["GET", "POST"])
+def myrecipes(username):
     # grabe the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     recipes = list(mongo.db.recipes.find())
     categories = mongo.db.categories.find()
     if session["user"]:
-        return render_template("profile.html", username=username, recipes=recipes, categories=categories)
+        return render_template("myrecipes.html", username=username, recipes=recipes, categories=categories)
 
     return redirect(url_for("login"))
 
@@ -141,8 +142,9 @@ def add_recipe():
 
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    return render_template("recipe.html", recipe=recipe)
+    return render_template("recipe.html", recipe=recipe, categories=categories)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -161,7 +163,7 @@ def edit_recipe(recipe_id):
         flash("Recipe Successfully Updated")
 
     recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template(
         "edit_recipe.html", recipe=recipe, categories=categories)
 

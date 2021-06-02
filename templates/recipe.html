@@ -20,7 +20,11 @@
             <p class="recipe-description">{{ recipe.recipe_description.capitalize() }}</p>
             <div class="row">
                 <div class="col s12 m6 offset-m3">
-                    <img class="recipe-image center-align" src="{{ recipe.recipe_img }}" alt="{{ recipe.recipe_name }}">
+                    {% if recipe.recipe_img == "" %}
+                                    <img src="https://images.theconversation.com/files/307440/original/file-20191217-58292-nlmvmh.jpg" alt="{{ recipe.recipe_name }}" class="card-image center">
+                                    {% else %}
+                                    <img src="{{ recipe.recipe_img }}" alt="{{ recipe.recipe_name }}" class="card-image center-align">
+                                {% endif %}
                 </div>
             </div>
             <div class="row">

@@ -43,7 +43,7 @@ li.cat-list {
 }
 
 .card-image {
-    padding: 5px;
+    padding: 15px 5px;
     max-width: 100%;
     height: auto;
     max-height: 280px;
