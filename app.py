@@ -104,9 +104,10 @@ def profile(username):
     # grabe the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-
+    recipes = list(mongo.db.recipes.find())
+    categories = mongo.db.categories.find()
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, recipes=recipes, categories=categories)
 
     return redirect(url_for("login"))
 
@@ -135,7 +136,7 @@ def add_recipe():
         flash("Recipe Successfully Added")
         return redirect(url_for("get_recipes"))
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("add_recipe.html", categories=categories)
 
 @app.route("/recipe/<recipe_id>")
