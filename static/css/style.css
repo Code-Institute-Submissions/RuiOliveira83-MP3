@@ -88,3 +88,11 @@ li.cat-list {
     font-weight: 400;
     text-shadow: 2px 2px 2px rgb(0 0 0 / 50%);
 }
+
+.btn-margin {
+    margin: 15px;
+}
+
+.dropdown-content {
+    top: -65px;
+}
