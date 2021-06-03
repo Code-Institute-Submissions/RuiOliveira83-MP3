@@ -22,7 +22,7 @@ mongo = PyMongo(app)
 @app.route("/get_recipes")
 def get_recipes():
     recipes = list(mongo.db.recipes.find())
-    categories = mongo.db.categories.find()
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template(
         "recipes.html", recipes=recipes, categories=categories)
 
@@ -47,7 +47,7 @@ def category_search(category_name):
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    categories = mongo.db.categories.find()
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -72,6 +72,7 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     if request.method == "POST":
         #check if username exists in db
         existing_user =mongo.db.users.find_one(
@@ -86,7 +87,7 @@ def login():
                     flash("Welcome, {}".format(
                         request.form.get("username").capitalize()))
                     return redirect(url_for(
-                        "myrecipes", username=session["user"]))
+                        "myrecipes", username=session["user"], categories=categories))
             else:
                 # invalid password
                 flash("Incorrect Username and/or Password")
@@ -97,7 +98,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("login.html")
+    return render_template("login.html", categories=categories)
 
 
 @app.route("/myrecipes/<username>", methods=["GET", "POST"])
@@ -106,9 +107,10 @@ def myrecipes(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     recipes = list(mongo.db.recipes.find())
-    categories = mongo.db.categories.find()
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
     if session["user"]:
-        return render_template("myrecipes.html", username=username, recipes=recipes, categories=categories)
+        return render_template(
+            "myrecipes.html", username=username, recipes=recipes, categories=categories)
 
     return redirect(url_for("login"))
 
@@ -196,9 +198,13 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
+# #Handling error 404 and displaying relevant web page - from https://www.askpython.com/
+@app.errorhandler(404)
+def function_name(error):
+    return render_template('404.html'), 404
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
         port=int(os.environ.get("PORT")),
         debug=True)
-        
