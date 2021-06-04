@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
-    recipes = list(mongo.db.recipes.find())
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template(
         "recipes.html", recipes=recipes, categories=categories)
@@ -66,7 +66,7 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("myrecipes", username=session["user"]))
+        return redirect(url_for("my_recipes.html", username=session["user"]))
     return render_template("register.html", categories=categories)
 
 
@@ -87,7 +87,7 @@ def login():
                     flash("Welcome, {}".format(
                         request.form.get("username").capitalize()))
                     return redirect(url_for(
-                        "myrecipes", username=session["user"], categories=categories))
+                        "my_recipes", username=session["user"], categories=categories))
             else:
                 # invalid password
                 flash("Incorrect Username and/or Password")
@@ -101,8 +101,8 @@ def login():
     return render_template("login.html", categories=categories)
 
 
-@app.route("/myrecipes/<username>", methods=["GET", "POST"])
-def myrecipes(username):
+@app.route("/my_recipes/<username>", methods=["GET", "POST"])
+def my_recipes(username):
     # grabe the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -110,7 +110,7 @@ def myrecipes(username):
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     if session["user"]:
         return render_template(
-            "myrecipes.html", username=username, recipes=recipes, categories=categories)
+            "my_recipes.html", username=username, recipes=recipes, categories=categories)
 
     return redirect(url_for("login"))
 
@@ -163,11 +163,17 @@ def edit_recipe(recipe_id):
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
+        username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+        recipes = list(mongo.db.recipes.find())
+        categories = list(mongo.db.categories.find().sort("category_name", 1))
+        return render_template(
+        "my_recipes.html", recipes=recipes, username=username, categories=categories)
 
     recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template(
-        "edit_recipe.html", recipe=recipe, categories=categories)
+        "edit_recipe.html", recipe=recipe, username=session["user"], categories=categories)
 
 
 @app.route("/delete_recipe/<recipe_id>")
