@@ -97,3 +97,10 @@ li.cat-list {
     top: -65px;
 }
 
+.pagination li.active a {
+    background-color: orange;
+}
+
+.card.large {
+    height: 460px;
+}

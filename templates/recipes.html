@@ -43,7 +43,7 @@
                                     {% else %}
                                     <img src="{{ recipe.recipe_img }}" alt="{{ recipe.recipe_name }}" class="card-image">
                                 {% endif %}
-                                <p class="hide-on-small-only blue-grey-text text-darken-3">{{ recipe.recipe_description.capitalize() }}</p>
+                                <p><span class="hide-on-small-only blue-grey-text text-darken-3 truncate">{{ recipe.recipe_description.capitalize() }}</span></p>
                             </div>
                             <div class="card-action">
                                 <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">View Recipe</a>
@@ -69,14 +69,13 @@
                     </div>
                     {% endfor %}
                 </div>
-
-                    
                 
             </div>
         <!-- else statment for when we don't have a recipe to show -->
         {% else %}
         <h4 class="blue-grey-text text-darken-3">No results found</h4>
         {% endif %}
+        {{ pagination.links }}
     </div>
 
 {% endblock %}

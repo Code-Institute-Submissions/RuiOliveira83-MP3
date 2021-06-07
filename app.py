@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from flask_paginate import Pagination, get_page_args
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -18,31 +19,62 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# Pagination guides taken from
+# https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9
+def paginated(recipes):
+    per_page = 6
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                           per_page_parameter='per_page')
+    offset = page * per_page - per_page
+
+    return recipes[offset: offset + per_page]
+
+
+def pagination_args(recipes):
+    page, per_page, offset = get_page_args(
+                            page_parameter='page',
+                            per_page_parameter='per_page')
+    total = len(recipes)
+    flash(total)
+    flash(per_page)
+    return Pagination(page=page, per_page=per_page, total=total)
+
+
+
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     categories = list(mongo.db.categories.find().sort("category_name", 1))
+    recipes_paginated = paginated(recipes)
+    pagination = pagination_args(recipes)
     return render_template(
-        "recipes.html", recipes=recipes, categories=categories)
+        "recipes.html", recipes=recipes_paginated, categories=categories,
+        pagination=pagination)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    recipes_paginated = paginated(recipes)
+    pagination = pagination_args(recipes)
     categories = mongo.db.categories.find()
     return render_template(
-        "recipes.html", recipes=recipes, categories=categories)
+        "recipes.html", recipes=recipes_paginated, categories=categories,
+        pagination=pagination)
 
 
 @app.route("/category_search/<category_name>")
 def category_search(category_name):
     recipes = list(mongo.db.recipes.find(
         {"$text": {"$search": category_name}}))
+    recipes_paginated = paginated(recipes)
+    pagination = pagination_args(recipes)
     categories = list(mongo.db.categories.find())
     return render_template(
-        "recipes.html", recipes=recipes, categories=categories)
+        "recipes.html", recipes=recipes_paginated, categories=categories,
+        pagination=pagination)
 
 
 @app.route("/register", methods=["GET", "POST"])
