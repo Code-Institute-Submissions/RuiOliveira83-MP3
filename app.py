@@ -214,13 +214,11 @@ def edit_recipe(recipe_id):
 
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    recipes = list(mongo.db.recipes.find({'added_by': username}))
-    recipes_paginated = paginated(recipes)
-    pagination = pagination_args(recipes)
+    recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template(
-    "my_recipes.html", recipes=recipes_paginated,
-    username=username, categories=categories, pagination=pagination)
+                "edit_recipe.html", recipe=recipe,
+                username=username, categories=categories)
 
 
 @app.route("/delete_recipe/<recipe_id>")
