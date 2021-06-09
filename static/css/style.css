@@ -1,14 +1,24 @@
-body{
+body {
     background-color: #dcc7aa;
     width:auto;
+    font-family: 'Baloo Tammudu 2', sans-serif;
 }
 
 .brand-logo {
     margin-left: 15px;
+    margin-top: 8px;
 }
 
 .text-shadow {
     text-shadow: 2px 2px 2px rgb(0 0 0 / 50%);
+}
+
+.text-shadow-not {
+    text-shadow: none;
+}
+
+.text-lobster{
+    font-family: 'Lobster';
 }
 
 .sidenav.right-aligned {
@@ -103,4 +113,12 @@ li.cat-list {
 
 .card.large {
     height: 460px;
+}
+
+.btn-categories {
+    margin: 5px 40px 20px 0px;
+}
+
+.padding-top-8 {
+    padding-top: 8px;
 }

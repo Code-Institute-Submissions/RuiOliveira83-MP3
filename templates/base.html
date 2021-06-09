@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500;600&family=Lobster&display=swap" rel="stylesheet">
+    <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <!-- Css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
@@ -25,23 +31,23 @@
                         <a class='dropdown-trigger' href='#' data-target='dropdown1'>Categories <i class="fas fa-caret-down"></i></a>
                         <!-- Dropdown Structure -->
                         <ul id='dropdown1' class='dropdown-content'>
-                            <li><a href="{{ url_for('get_recipes') }}">All</a></li>
+                            <li><a href="{{ url_for('get_recipes') }}"><span class="text-shadow-not">All</span></a></li>
                             {% for category in categories %}
-                                <li><a href="{{ url_for('category_search', category_name=category.category_name) }}">{{ category.category_name }}</a></li>
+                                <li><a href="{{ url_for('category_search', category_name=category.category_name) }}"><span class="text-shadow-not">{{ category.category_name }}</span></a></li>
                             {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
+                    <li class="padding-top-8"><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
                     {% if session.user %}
-                        <li><a href="{{ url_for('my_recipes', username=session['user']) }}">My Recipes</a></li>
-                        <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+                    <li class="padding-top-8"><a href="{{ url_for('my_recipes', username=session['user']) }}">My Recipes</a></li>
+                    <li class="padding-top-8"><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                         {% if session.user|lower == "admin"|lower %}
-                            <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+                        <li class="padding-top-8"><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
                         {% endif %}
-                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        <li class="padding-top-8"><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li class="padding-top-8"><a href="{{ url_for('login') }}">Log In</a></li>
+                    <li class="padding-top-8"><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
                 </ul>
             </div>

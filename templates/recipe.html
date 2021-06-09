@@ -1,23 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
     
-    <h3 class="center-align blue-grey-text text-darken-3">{{ recipe.recipe_name.capitalize() }}</h3>
+    <br>
     
     <div class="row card-panel brown lighten-5">
+        
         <div class="col s12">
-            
-            {% for category in recipe.category_name %}
-                        <div class="col">
-                            <!-- <li class="cat-list"> -->
-                                <a href="{{ url_for('category_search', category_name=category) }}" class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn truncate">
-                                    <span class="white-text text-uppercase">{{ category }} </span>
-                                </a>
-                            <!-- </li> -->
-                        </div>
-            {% endfor %}
-            <br>
-            
-            <p class="recipe-description">{{ recipe.recipe_description.capitalize() }}</p>
+            <h3 class="center-align blue-grey-text text-darken-3">{{ recipe.recipe_name.capitalize() }}</h3>
+            <hr>
             <div class="row">
                 <div class="col s12 m6 offset-m3">
                     {% if recipe.recipe_img == "" %}
@@ -28,8 +18,22 @@
                 </div>
             </div>
             <div class="row">
+                <span class='text-lobster'>Categories:</span><br>
+                {% for category in recipe.category_name %}
+                    <a href="{{ url_for('category_search', category_name=category) }}" class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn btn-categories truncate">
+                        <span class="white-text text-uppercase">{{ category }} </span>
+                    </a>
+                {% endfor %}
+                <br>
+                <span class="text-lobster">Description:</span>
+                <span>{{ recipe.recipe_description.capitalize() }}</span>
+                
+            </div>
+            
+            
+            <div class="row">
                 <div class="col s12 m6">
-                    <h3 class="blue-grey-text text-darken-3">Ingredients:</h3>
+                    <h3 class="blue-grey-text text-darken-3 text-lobster">Ingredients:</h3>
                     {% for ingredient in recipe.ingredients.splitlines() %}
                     <ul>
                         <li><i class="far fa-circle"> </i> {{ ingredient }}</li>
@@ -37,7 +41,7 @@
                     {% endfor %}
                 </div>
                 <div class="col s12 m6">
-                    <h3 class="blue-grey-text text-darken-3">Method:</h3>
+                    <h3 class="blue-grey-text text-darken-3 text-lobster">Method:</h3>
                     {% for step in recipe.method.splitlines() %}
                     <ul>
                         <li><i class="fas fa-long-arrow-alt-right"></i> {{ step }}</li>
