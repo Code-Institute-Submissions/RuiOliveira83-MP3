@@ -18,16 +18,15 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+PER_PAGE = 8
 
 # Pagination guides taken from
 # https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9
 def paginated(recipes):
-    per_page = 6
     page, per_page, offset = get_page_args(page_parameter='page',
                                            per_page_parameter='per_page')
-    offset = page * per_page - per_page
-
-    return recipes[offset: offset + per_page]
+    offset = page * PER_PAGE - PER_PAGE
+    return recipes[offset: offset + PER_PAGE]
 
 
 def pagination_args(recipes):
@@ -35,9 +34,7 @@ def pagination_args(recipes):
                             page_parameter='page',
                             per_page_parameter='per_page')
     total = len(recipes)
-    flash(total)
-    flash(per_page)
-    return Pagination(page=page, per_page=per_page, total=total)
+    return Pagination(page=page, per_page=PER_PAGE, total=total)
 
 
 
@@ -48,21 +45,26 @@ def get_recipes():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     recipes_paginated = paginated(recipes)
     pagination = pagination_args(recipes)
-    return render_template(
-        "recipes.html", recipes=recipes_paginated, categories=categories,
-        pagination=pagination)
+    return render_template("recipes.html", recipes=recipes_paginated,
+                           categories=categories, pagination=pagination)
 
 
-@app.route("/search", methods=["GET", "POST"])
+@app.route("/search", methods=["GET"])
 def search():
-    query = request.form.get("query")
-    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                           per_page_parameter='per_page')
+    query = request.args.get('query')
+    
+    recipes = list(mongo.db.recipes.find(
+        {"$text": {"$search": str(query)}}))
+    categories = mongo.db.categories.find()
     recipes_paginated = paginated(recipes)
     pagination = pagination_args(recipes)
-    categories = mongo.db.categories.find()
-    return render_template(
-        "recipes.html", recipes=recipes_paginated, categories=categories,
-        pagination=pagination)
+    flash(query)
+    flash(page)
+    return render_template("recipes.html", recipes=recipes_paginated,
+                            categories=categories,
+                            pagination=pagination)
 
 
 @app.route("/category_search/<category_name>")
@@ -119,7 +121,8 @@ def login():
                     flash("Welcome, {}".format(
                         request.form.get("username").capitalize()))
                     return redirect(url_for(
-                        "my_recipes", username=session["user"], categories=categories))
+                        "my_recipes", username=session["user"],
+                        categories=categories))
             else:
                 # invalid password
                 flash("Incorrect Username and/or Password")
@@ -133,16 +136,20 @@ def login():
     return render_template("login.html", categories=categories)
 
 
-@app.route("/my_recipes/<username>", methods=["GET", "POST"])
+@app.route("/my_recipes/<username>")
 def my_recipes(username):
     # grabe the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    recipes = list(mongo.db.recipes.find())
+    recipes = list(mongo.db.recipes.find({'added_by': username}))
+    recipes_paginated = paginated(recipes)
+    pagination = pagination_args(recipes)
     categories = list(mongo.db.categories.find().sort("category_name", 1))
+
     if session["user"]:
         return render_template(
-            "my_recipes.html", username=username, recipes=recipes, categories=categories)
+            "my_recipes.html", username=username, recipes=recipes_paginated,
+            categories=categories, pagination=pagination)
 
     return redirect(url_for("login"))
 
@@ -197,15 +204,23 @@ def edit_recipe(recipe_id):
         flash("Recipe Successfully Updated")
         username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-        recipes = list(mongo.db.recipes.find())
+        recipes = list(mongo.db.recipes.find({'added_by': username}))
+        recipes_paginated = paginated(recipes)
+        pagination = pagination_args(recipes)
         categories = list(mongo.db.categories.find().sort("category_name", 1))
         return render_template(
-        "my_recipes.html", recipes=recipes, username=username, categories=categories)
+        "my_recipes.html", recipes=recipes_paginated,
+        username=username, categories=categories, pagination=pagination)
 
-    recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    recipes = list(mongo.db.recipes.find({'added_by': username}))
+    recipes_paginated = paginated(recipes)
+    pagination = pagination_args(recipes)
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template(
-        "edit_recipe.html", recipe=recipe, username=session["user"], categories=categories)
+    "my_recipes.html", recipes=recipes_paginated,
+    username=username, categories=categories, pagination=pagination)
 
 
 @app.route("/delete_recipe/<recipe_id>")
