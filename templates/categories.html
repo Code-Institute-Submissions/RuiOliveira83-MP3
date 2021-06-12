@@ -11,10 +11,9 @@
                         <p class="center-align cat-card  blue-grey-text text-darken-3 text-shadow">{{ category.category_name.capitalize() }}</p>
                     </div>
                     <div class="card-action">
-                        
+                        <!-- Modal - defensive programming - to be sure the admin really wants to delete the category -->
                         <!-- Modal Trigger -->
                         <a class="modal-trigger center-align text-heavy" href="#{{ category._id }}">Delete Category</a>
-
                         <!-- Modal Structure -->
                         <div id="{{ category._id }}" class="modal">
                             <div class="modal-content">
@@ -28,20 +27,18 @@
                                     class="modal-close waves-effect waves-green btn-flat">Delete Category {{ category.category_name }}</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         {% endfor %}
-
     </div>
     <div class="row">
         <div class="col s12 m8 l6">
+            <!-- Modal to add a new category -->
             <!-- Modal Trigger -->
             <a class="modal-trigger" href="#modal2">
                 <div class="card-panel orange accent-3 cat-card">
-                    <span class="white-text"><i class="fas fa-plus-square"> </i> Add Category
-                    </span>
+                    <span class="white-text"><i class="fas fa-plus-square"> </i> Add Category</span>
                 </div>
             </a>
             <!-- Modal Structure -->
@@ -49,6 +46,7 @@
                 <form class="col s12 modal-new-cat" method="POST" action="{{ url_for('get_categories') }}">
                     <div class="modal-content modal-new-cat">
                         <h4>Add a new category</h4>
+                        <!-- new category's name -->
                         <div class="input-field">
                             <i class="fas fa-plus-square prefix blue-grey-text text-darken-3"></i>
                             <input id="category_name" name="category_name" minlength="3" maxlength="50" type="text"
@@ -56,19 +54,13 @@
                             <label for="category_name">New category</label>
                         </div>
                     </div>
-
-                            <div class="modal-footer">
-                                <a href="#!" class="modal-close blue-grey lighten-1 waves-effect btn-large left">Cancel </a>
-                                <button class="btn-large orange accent-3 text-heavy text-shadow waves-effect waves-light left btn-left-margin"
-                                    type="submit">
-                                     Add Category
-                                </button>
-                                <br>
-                            </div>
-                        </form>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close blue-grey lighten-1 waves-effect btn-large left">Cancel </a>
+                        <button class="btn-large orange accent-3 text-heavy text-shadow waves-effect waves-light left btn-left-margin"
+                            type="submit">Add Category</button>
+                        <br>
                     </div>
-                </div>
-
+                </form>
             </div>
         </div>
     </div>
