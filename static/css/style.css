@@ -29,6 +29,10 @@ body {
     font-weight: 500;
 }
 
+.text-large {
+    font-size: 150%;
+}
+
 .flashes h4 {
     line-height:2;
 }

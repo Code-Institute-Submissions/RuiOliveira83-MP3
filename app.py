@@ -63,8 +63,8 @@ def search():
     flash(query)
     flash(page)
     return render_template("recipes.html", recipes=recipes_paginated,
-                            categories=categories,
-                            pagination=pagination)
+                           categories=categories,
+                           pagination=pagination)
 
 
 @app.route("/category_search/<category_name>")

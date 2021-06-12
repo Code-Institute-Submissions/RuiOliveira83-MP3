@@ -18,14 +18,14 @@
                 </div>
             </div>
             <div class="row">
-                <span class='text-lobster'>Categories:</span><br>
+                <span class='text-lobster text-large'>Categories:</span><br>
                 {% for category in recipe.category_name %}
                     <a href="{{ url_for('category_search', category_name=category) }}" class="orange accent-3 text-shadow text-heavy waves-effect waves-light btn btn-categories truncate">
                         <span class="white-text text-uppercase">{{ category }} </span>
                     </a>
                 {% endfor %}
                 <br>
-                <span class="text-lobster">Description:</span>
+                <span class="text-lobster text-large">Description:</span>
                 <span>{{ recipe.recipe_description.capitalize() }}</span>
                 
             </div>

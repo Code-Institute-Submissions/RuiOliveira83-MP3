@@ -8,15 +8,16 @@
                 <div class="row">
                     <div class="input-field col s10">
                         <i class="fas fa-book prefix blue-grey-text text-darken-3"></i>
-                        <input id="recipe_name" name="recipe_name" minlength="3"
-                        maxlength="50" type="text" class="validate" required>
+                        <input id="recipe_name" name="recipe_name" minlength="3" pattern="[a-zA-Z][a-zA-Z\s]{1,}"
+                            maxlength="50" type="text" class="validate" required>
                         <label for="recipe_name">Recipe Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s10">
                         <i class="fas fa-align-justify prefix blue-grey-text text-darken-3"></i>
-                        <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="250" class="materialize-textarea validate" required></textarea>
+                        <textarea id="recipe_description" name="recipe_description" pattern="[a-zA-Z][a-zA-Z\s]{1,}"
+                            minlength="5" maxlength="250" class="materialize-textarea validate" required></textarea>
                         <label for="recipe_description">Recipe Description</label>
                     </div>
                 </div>
