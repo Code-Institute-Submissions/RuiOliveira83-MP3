@@ -2,19 +2,17 @@
 {% block content %}
     
     <br>
-    
     <div class="row card-panel brown lighten-5">
-        
         <div class="col s12">
             <h3 class="center-align blue-grey-text text-darken-3">{{ recipe.recipe_name.capitalize() }}</h3>
             <hr>
             <div class="row">
                 <div class="col s12 m6 offset-m3">
                     {% if recipe.recipe_img == "" %}
-                                    <img src="https://images.theconversation.com/files/307440/original/file-20191217-58292-nlmvmh.jpg" alt="{{ recipe.recipe_name }}" class="card-image center">
-                                    {% else %}
-                                    <img src="{{ recipe.recipe_img }}" alt="{{ recipe.recipe_name }}" class="card-image center-align">
-                                {% endif %}
+                        <img src="https://images.theconversation.com/files/307440/original/file-20191217-58292-nlmvmh.jpg" alt="{{ recipe.recipe_name }}" class="card-image center">
+                    {% else %}
+                        <img src="{{ recipe.recipe_img }}" alt="{{ recipe.recipe_name }}" class="card-image center-align">
+                    {% endif %}
                 </div>
             </div>
             <div class="row">
@@ -27,25 +25,22 @@
                 <br>
                 <span class="text-lobster text-large">Description:</span>
                 <span>{{ recipe.recipe_description.capitalize() }}</span>
-                
             </div>
-            
-            
             <div class="row">
                 <div class="col s12 m6">
                     <h3 class="blue-grey-text text-darken-3 text-lobster">Ingredients:</h3>
                     {% for ingredient in recipe.ingredients.splitlines() %}
-                    <ul>
-                        <li><i class="far fa-circle"> </i> {{ ingredient }}</li>
-                    </ul>
+                        <ul>
+                            <li><i class="far fa-circle"> </i> {{ ingredient }}</li>
+                        </ul>
                     {% endfor %}
                 </div>
                 <div class="col s12 m6">
                     <h3 class="blue-grey-text text-darken-3 text-lobster">Method:</h3>
                     {% for step in recipe.method.splitlines() %}
-                    <ul>
-                        <li><i class="fas fa-long-arrow-alt-right"></i> {{ step }}</li>
-                    </ul>
+                        <ul>
+                            <li><i class="fas fa-long-arrow-alt-right"></i> {{ step }}</li>
+                        </ul>
                     {% endfor %}
                 </div>
             </div>
@@ -69,9 +64,7 @@
                         </div>
                     </div>
                 </div>
-
             {% endif %}
-
         </div>
     </div>
 

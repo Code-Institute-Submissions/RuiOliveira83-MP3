@@ -19,7 +19,6 @@
     <title>Sweet Project</title>
 </head>
 <body>
-    
     <header>
         <!-- top navbar -->
         <nav class="nav-extended blue-grey lighten-1 z-depth-2 text-shadow">
@@ -39,20 +38,19 @@
                     </li>
                     <li class="padding-top-8"><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
                     {% if session.user %}
-                    <li class="padding-top-8"><a href="{{ url_for('my_recipes', username=session['user']) }}">My Recipes</a></li>
-                    <li class="padding-top-8"><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+                        <li class="padding-top-8"><a href="{{ url_for('my_recipes', username=session['user']) }}">My Recipes</a></li>
+                        <li class="padding-top-8"><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                         {% if session.user|lower == "admin"|lower %}
-                        <li class="padding-top-8"><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+                            <li class="padding-top-8"><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
                         {% endif %}
                         <li class="padding-top-8"><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
-                    <li class="padding-top-8"><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li class="padding-top-8"><a href="{{ url_for('register') }}">Register</a></li>
+                        <li class="padding-top-8"><a href="{{ url_for('login') }}">Log In</a></li>
+                        <li class="padding-top-8"><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
                 </ul>
             </div>
         </nav>
-        
         <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align blue-grey-text text-darken-3">Sweet Project</h4></li>
@@ -70,7 +68,6 @@
             {% endif %}
         </ul>
     </header>
-
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
@@ -83,7 +80,6 @@
             {% endif %}
         {% endwith %}
     </section>
-
     <main class="container">
         {% block content %}
         {% endblock %}

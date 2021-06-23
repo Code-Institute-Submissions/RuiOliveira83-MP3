@@ -12,13 +12,17 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
+# --- Config
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# --- Pagination
+
 PER_PAGE = 8
+
 
 # Pagination guides taken from
 # https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9
@@ -37,7 +41,7 @@ def pagination_args(recipes):
     return Pagination(page=page, per_page=PER_PAGE, total=total)
 
 
-
+# --- Homepage
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
@@ -49,12 +53,13 @@ def get_recipes():
                            categories=categories, pagination=pagination)
 
 
+# --- Search
 @app.route("/search", methods=["GET"])
 def search():
     page, per_page, offset = get_page_args(page_parameter='page',
                                            per_page_parameter='per_page')
     query = request.args.get('query')
-    
+
     recipes = list(mongo.db.recipes.find(
         {"$text": {"$search": str(query)}}))
     categories = mongo.db.categories.find()
@@ -67,6 +72,7 @@ def search():
                            pagination=pagination)
 
 
+# --- Categories
 @app.route("/category_search/<category_name>")
 def category_search(category_name):
     recipes = list(mongo.db.recipes.find(
@@ -79,6 +85,7 @@ def category_search(category_name):
         pagination=pagination)
 
 
+# --- Register new user
 @app.route("/register", methods=["GET", "POST"])
 def register():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -104,30 +111,29 @@ def register():
     return render_template("register.html", categories=categories)
 
 
+# --- Log in
 @app.route("/login", methods=["GET", "POST"])
 def login():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     if request.method == "POST":
-        #check if username exists in db
-        existing_user =mongo.db.users.find_one(
+        # check if username exists in db
+        existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
             # check password
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    # valid password
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username").capitalize()))
-                    return redirect(url_for(
-                        "my_recipes", username=session["user"],
-                        categories=categories))
+                    existing_user["password"], request.form.get("password")):
+                        session["user"] = request.form.get("username").lower()
+                        flash("Welcome, {}".format(
+                            request.form.get("username").capitalize()))
+                        return redirect(url_for(
+                            "my_recipes", username=session["user"],
+                            categories=categories))
             else:
                 # invalid password
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-
         else:
             # username incorrect
             flash("Incorrect Username and/or Password")
@@ -136,6 +142,7 @@ def login():
     return render_template("login.html", categories=categories)
 
 
+# --- User's recipes
 @app.route("/my_recipes/<username>")
 def my_recipes(username):
     # grabe the session user's username from db
@@ -154,14 +161,16 @@ def my_recipes(username):
     return redirect(url_for("login"))
 
 
+# --- Log out
 @app.route("/logout")
 def logout():
-    #remove user from session cookies
+    # remove user from session cookies
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
 
 
+# --- Add Recipe
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
@@ -181,6 +190,7 @@ def add_recipe():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("add_recipe.html", categories=categories)
 
+# --- Recipes
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
     categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -203,14 +213,14 @@ def edit_recipe(recipe_id):
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
         username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+            {"username": session["user"]})["username"]
         recipes = list(mongo.db.recipes.find({'added_by': username}))
         recipes_paginated = paginated(recipes)
         pagination = pagination_args(recipes)
         categories = list(mongo.db.categories.find().sort("category_name", 1))
         return render_template(
-        "my_recipes.html", recipes=recipes_paginated,
-        username=username, categories=categories, pagination=pagination)
+            "my_recipes.html", recipes=recipes_paginated,
+            username=username, categories=categories, pagination=pagination)
 
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -228,6 +238,7 @@ def delete_recipe(recipe_id):
     return redirect(url_for("get_recipes"))
 
 
+# --- Manage Categories
 @app.route("/get_categories", methods=["GET", "POST"])
 def get_categories():
     if request.method == "POST":
@@ -249,13 +260,15 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
-# #Handling error 404 and displaying relevant web page - from https://www.askpython.com/
+# --- Error handlers from https://www.askpython.com/
+#  Handling error 404 and displaying relevant web page
 @app.errorhandler(404)
 def function_name(error):
     return render_template('404.html'), 404
 
 
+# --- Run the app
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")),
-        debug=True)
+            port=int(os.environ.get("PORT")),
+            debug=True)

@@ -38,7 +38,7 @@
                                         <!-- if statement to show a picture if the recipe creator didn't add one-->
                                         {% if recipe.recipe_img == "" %}
                                             <img src="https://images.theconversation.com/files/307440/original/file-20191217-58292-nlmvmh.jpg" alt="{{ recipe.recipe_name }}" class="card-image">
-                                            {% else %}
+                                        {% else %}
                                             <img src="{{ recipe.recipe_img }}" alt="{{ recipe.recipe_name }}" class="card-image">
                                         {% endif %}
                                     </a>
@@ -74,7 +74,7 @@
             </div>
         <!-- else statment for when we don't have a recipe to show -->
         {% else %}
-        <h4 class="blue-grey-text text-darken-3">No results found</h4>
+            <h4 class="blue-grey-text text-darken-3">No results found</h4>
         {% endif %}
         <!-- pagination links - show only 8 recipes per page -->
         {{ pagination.links }}
