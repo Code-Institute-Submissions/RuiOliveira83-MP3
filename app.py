@@ -190,6 +190,7 @@ def add_recipe():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("add_recipe.html", categories=categories)
 
+
 # --- Recipes
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
@@ -266,6 +267,17 @@ def delete_category(category_id):
 def function_name(error):
     return render_template('404.html'), 404
 
+
+# Handling error 500 and displaying relevant web page
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('500.html'), 500
+
+
+# Handling error 403 and displaying relevant web page
+@app.errorhandler(403)
+def internal_error(error):
+    return render_template('403.html'), 403
 
 # --- Run the app
 if __name__ == "__main__":

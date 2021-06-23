@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align blue-grey-text text-darken-3">500 - Internal Server Error</h3>
+    <img src="https://images.theconversation.com/files/307440/original/file-20191217-58292-nlmvmh.jpg" alt="sugar" class="card-image">
+    <h4 class="center-align blue-grey-text text-darken-3">The page that you were looking for cannot be displayed.</h4>
+    <h4 class="center-align blue-grey-text text-darken-3">Please check the URL or <a href="{{ url_for('get_recipes') }}" class="">click here </a>to return home.</h4>
+
+{% endblock %}
