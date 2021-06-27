@@ -1,22 +1,25 @@
 # [The Sweet Project](https://ruioliveira83.github.io/MP3)
 
-The main purpose of this project is to create a website where the community can share dessert recipes in a easy to navigate and clean looking website.  
-This website is my third milestone project for the diploma in software development from the [code institute](https://codeinstitute.net).  
+The main purpose of this project is to create a full-stack website where the community can share and search dessert recipes in a easy to navigate and clean looking website, using HTML, CSS, JavaScript, Python, Flask and MongoDB.
+This website is my third milestone project for the diploma in software development from the [code institute](https://codeinstitute.net). 
 A live view of this website can be found here: [The Sweet Project](https://sweet-recipes-project.herokuapp.com/).
 
-<!-- ---
+---
 ## UX
 
 ### User Stories
 * As a regular user, I want a website responsive and good looking on all devices;
 * As a regular user, I want a website easy to navigate;
-* As a regular user, I want to be able to start playing the game quickly;
-* As a user, I want to be able to read the game rules, if needed;
-* As a user, I want to see my score;
-* As a user I want to be able to see my top score;
-* As a user, I want to be able to contact the developer to give my opinion or suggestion;
-* As a user I want to play a funny game;
-* As a user I want to repeat the experience and play again.
+* As a regular user, I want to see and get inspired by dessert recipes;
+* As a regular user, I want to be able to search recipes;
+* As a regular user, I want to see all the recipes in each category;
+* As a registered user, I want to have all the funcionalities of a regular user and some extra functionalities;
+* As a registered user, I want to make use of CRUD (create, read, update and delete) for my recipes;
+* As a registered user, I want to quickly see all my recipes;
+* As a Admin user, I want to have all the funcionalities of a registered user and some extra functionalities;
+* As a Admin member, I want to be to make use of CRUD (create, read, update and delete) for all recipes; 
+* As a Admin member, I want to be to make use of CRUD (create, read, update and delete) for the categories; 
+
 
 ### Wireframes
 It was used [Balsamiq](https://balsamiq.com/) to create the following wireframes:
@@ -175,4 +178,4 @@ To run the code locally by __cloning__ the project from GitHub:
 ### Acknowledgements
 - The [code institute](https://codeinstitute.net) for the inspiration and knowledge to do this website.
 - The code institute [Slack](https://slack.com/) channel, for having an extensive library of questions and answer with almost all my questions.
-- My mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/?originalSubdomain=ng) for guidance and support. -->
+- My mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/?originalSubdomain=ng) for guidance and support.
