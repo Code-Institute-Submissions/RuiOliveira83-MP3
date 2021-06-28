@@ -23,12 +23,15 @@ A live view of this website can be found here: [The Sweet Project](https://sweet
 
 ### Wireframes
 It was used [Balsamiq](https://balsamiq.com/) to create the following wireframes:
-| Desktop                                       | Tablet                                       | Mobile                                       |
-| --------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| [Home](wireframes/home-desktop.png)           | [Home](wireframes/home-tablet.png)           | [Home](wireframes/home-mobile.png)           |
-| [Game](wireframes/game-desktop.png)           | [Game](wireframes/game-tablet.png)           | [Game](wireframes/game-mobile.png)           |
-| [Contact](wireframes/contact-desktop.png)     | [Contact](wireframes/contact-tablet.png)     | [Contact](wireframes/contact-mobile.png)     |
-| [How to Play](wireframes/howTo-desktop.png)   | [How to Play](wireframes/howTo-tablet.png)   | [How to Play](wireframes/howTo-mobile.png)   |
+| Desktop                                                        | Tablet and Mobile                                             |
+| -------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Home](wireframes/desktop-home.png)                            | [Home](wireframes/mobile-home.png)                            |
+| [Register](wireframes/desktop-register.png)                    | [Register](wireframes/mobile-register.png)                    |
+| [Log in](wireframes/desktop-log-in.png)                        | [Log in](wireframes/mobile-log-in.png)                        |
+| [Add Recipe](wireframes/desktop-add-recipe.png)                | [Add Recipe](wireframes/mobile-add-recipe.png)                |
+| [Edit Recipe](wireframes/desktop-edit-recipe.png)              | [Edit Recipe](wireframes/mobile-edit-recipe.png)              |
+| [Manage Categories](wireframes/desktop-manage-categories.png)  | [Manage Categories](wireframes/mobile-manage-categories.png)  |
+| [User Page](wireframes/desktop-user-page.png)                  | [User Page](wireframes/mobile-user-page.png)                  |
 
 ---
 ## Features

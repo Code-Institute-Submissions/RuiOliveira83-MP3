@@ -126,3 +126,16 @@ li.cat-list {
 .padding-top-8 {
     padding-top: 8px;
 }
+
+.footer-social-media li {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.footer-margin{
+    margin-bottom: 0px;
+}
+
+.page-footer {
+    padding-top: 10px;
+}
