@@ -1,5 +1,5 @@
 # [The Sweet Project](https://ruioliveira83.github.io/MP3)
-
+![Responsiveness](readme-images/amiresponsive.png)
 The main purpose of this project is to create a full-stack website where the community can share and search dessert recipes in a easy to navigate and clean looking website, using HTML, CSS, JavaScript, Python, Flask and MongoDB.
 This website is my third milestone project for the diploma in software development from the [code institute](https://codeinstitute.net). 
 A live view of this website can be found here: [The Sweet Project](https://sweet-recipes-project.herokuapp.com/).
@@ -36,20 +36,36 @@ It was used [Balsamiq](https://balsamiq.com/) to create the following wireframes
 ---
 ## Features
 ### Existing Features
-This website has 2 pages: **Home** and **Game**. Both pages share the same **Header**.
+The users of this website can be divided in 3 categories: **unregistered user**, **registered user** and **admin**.
+All pages of this website share the same footer, this footer allows the user to go to the social media pages of this brand.
 
-The **Header** has 2 Modals:
-- a modal with a contact form where the user can leave a message or suggestion;
-- a modal with the game rules.
+The **unregistered users** can see and search all the recipes and can filter the recipes by category.
+On the unregistered users' header there are 4 options:
+- return home and see all the recipes;
+- filter the recipes by categories and see all the recipes for each category;
+- log in, if the unregistered user has an account and want to enter the account;
+- register, if the unregistered user wants to create an account and become a registered user.
+
+The **registered users** can see and search all the recipes and can filter the recipes by category.
+**Registered users** can add new recipes.
+**Registered users** can edit and delete the recipes added by them.
+On the registered users' header there are 5 options:
+- return home and see all the recipes;
+- filter the recipes by categories and see all the recipes for each category;
+- go to the user's page, to see all the recipes added by the user;
+- add new recipes;
+- log out.
+
+The **admin users** can see and search all the recipes and can filter the recipes by category
+**Admin users** can add new recipes.
+**Admin users** can edit and delete all the recipes.
+**Admin users** can add new categories and delete categories.
+On the admin users' header is similar to the registered users header, but has a extra option to manage categories.
+
+The **Home** page has a section with a search bar, where the user can search for a recipe.
+Below the search bar there are up to 8 cards with recipes. There is a limit of 8 recipes per page, if the user wants to see more recipes, the user needs to go to the next page. Each card has the option of opening the recipe page, and the option to edit or delete the recipe, if the recipe was added by the user, or if the user is an admin user.
 
 
-The **Home** page is where the user can select the game mode.
-The easy mode has 4 different options: Portuguese, Swedish, French and German.
-The hard game mode has only one option: Random, where the language will be randomly selected for each new word.
-
-The **Game** page includes a section with the score, the top score and the timer. Below that there is the word to be translated.
-After that, there is information about the mode selected. At the bottom of the game area, there are 4 different words, one of 
-them will be the correct translation. 
 
 
 ---

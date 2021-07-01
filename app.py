@@ -107,7 +107,7 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("my_recipes.html", username=session["user"]))
+        return redirect(url_for("my_recipes", username=session["user"]))
     return render_template("register.html", categories=categories)
 
 
