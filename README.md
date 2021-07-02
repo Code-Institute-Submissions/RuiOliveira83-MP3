@@ -36,10 +36,10 @@ It was used [Balsamiq](https://balsamiq.com/) to create the following wireframes
 ---
 ## Features
 ### Existing Features
-The users of this website can be divided in 3 categories: **unregistered user**, **registered user** and **admin**.
+The users of this website can be divided in 3 categories: **Unregistered user**, **Registered user** and **Admin**.
 All pages of this website share the same footer, this footer allows the user to go to the social media pages of this brand.
 
-The **unregistered users** can see and search all the recipes and can filter the recipes by category.
+The **Unregistered users** can see and search all the recipes and can filter the recipes by category.
 On the unregistered users' header there are 4 options:
 - return home and see all the recipes;
 - filter the recipes by categories and see all the recipes for each category;
@@ -56,36 +56,79 @@ On the registered users' header there are 5 options:
 - add new recipes;
 - log out.
 
-The **admin users** can see and search all the recipes and can filter the recipes by category
+The **Admin users** can see and search all the recipes and can filter the recipes by category.
 **Admin users** can add new recipes.
 **Admin users** can edit and delete all the recipes.
 **Admin users** can add new categories and delete categories.
-On the admin users' header is similar to the registered users header, but has a extra option to manage categories.
+The admin users' header is similar to the registered users header, but has a extra option to manage categories.
 
 The **Home** page has a section with a search bar, where the user can search for a recipe.
 Below the search bar there are up to 8 cards with recipes. There is a limit of 8 recipes per page, if the user wants to see more recipes, the user needs to go to the next page. Each card has the option of opening the recipe page, and the option to edit or delete the recipe, if the recipe was added by the user, or if the user is an admin user.
 
+The **My_recipes** page shows cards with the recipes added by the user. Each card has tree options:
+- View recipe;
+- Delete Recipe;
+- Edit Recipe.
+The my_recipes page is paginated and there is a limit of 8 cards per page.
 
+The **Recipe** page has:
+- the recipe name;
+- a recipe picture (if a picture wasn't added when the recipe was added a generic picture will be shown);
+- A list with the recipe categories. The displayed categories have a link to all the recipes with the same category;
+- A recipe description;
+- The recipe ingredients;
+- The recipe method;
+- If the recipe was added by the user there will be 2 buttons on the bottom that allow the user to edit or to delete the recipe.
 
+The **Add Recipe** page has a form where the user can add:
+- Recipe's name;
+- Recipe's description;
+- Recipe's Categories;
+- Recipe's Ingredients;
+- Recipe's Method;
+- Recipe image's URL.
+On the bottom of the page there is a button to add the recipe to the database.
+
+The **Edit Recipe** page has the same form as in the edit recipe, but the form is pre filled with the information to be edited.
+On the bottom of the page there are two buttons:
+- one edit button that will save the changes, edit the recipe and return to the user's my_recipe page;
+- one cancel button that will return the user to the home page without saving the changes.
+
+The **Register** page has a
+
+It was used defensive programming on the delete function (both delete recipe and delete category). A category or a recipe can't be deleted with just one click, the user needs to confirm that he really wants to delete the item, to avoid unintencional actions from the user.
 
 ---
 ## Technologies Used
-- [Gitpod](https://gitpod.io/)
-  - IDE (Integrated Development Environment) used to develop this project.
-- [GitHub](https://github.com/)
-  - The code hosting platform used to host the project.
+
+### Languages Used
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
   - The programming language used to provide content and structure.
 - [CSS3](https://en.wikipedia.org/wiki/CSS)
   - The programming language used to format the styling.
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
   - The programming language used to make the web page interactive.
+- [Python (including Jinja)](https://www.python.org/)
+  - The programming language used to build the backend functionality.
+### Frameworks and Libraries Used
+- [Gitpod](https://gitpod.io/)
+  - IDE (Integrated Development Environment) used to develop this project.
+- [GitHub](https://github.com/)
+  - The code hosting platform used to host the project.
+- [Heroku](https://dashboard.heroku.com/)
+  - Cloud platform used to deploy the website.
+- [MongoDB](https://www.mongodb.com/)
+  - Fully managed cloud database service used to store all the data for this project.
+- [Flask](https://flask.palletsprojects.com/)
+  -  Web framework used to provide libraries, tools and technologies for this project.
+- [Werkzeug](https://werkzeug.palletsprojects.com/)
+  - Comprehensive WSGI web application library used for password hashing, authentication and authorization.
 - [Balsamiq](https://balsamiq.com/)
   - The software used to create the project's wireframes.
-- [Bootstrap](https://getbootstrap.com/)
-  - Open-source CSS framework used to create some layout features in the project.
+- [Materialize](https://materializecss.com/)
+  - In-built JavaScript package for interactive and responsive web-design.
 - [Google Fonts ](https://fonts.google.com/)
-  - Font families library used to provide the font "Roboto".
+  - Font families library used to provide the font "Baloo Tammudu 2" and "lobster".
 - [jQuery](https://en.wikipedia.org/wiki/JQuery)
   - JavaScript library used to simplify the JavaScript code.
 - [W3C Markup Validator](https://validator.w3.org/)
