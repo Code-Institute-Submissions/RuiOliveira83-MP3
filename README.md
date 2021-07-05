@@ -159,7 +159,7 @@ It was used defensive programming on the delete function (both delete recipe and
 
 - [Python PEP8 Validator](http://pep8online.com/):
   - No errors found:
-![[Python Validator](readme-images/val-python.png)
+![Python Validator](readme-images/val-python.png)
 
 ### Responsiveness of the website
 It was used [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) and
@@ -172,20 +172,20 @@ The website structure adapts well to all used screen size.
 
 ### Functionality of the website
 The responsiveness of all pages was tested:
-- the Game Name on the top left corner returns you to the home page;
-- the "Tell me what you think" modal is working and, when clicked, a working message box is shown;
-- the "How to Play" modal is working and, when clicked, shows the game's rules;
-- the buttons to select the game mode are working properly;
-- the timer starts when the player starts to play the game;
-- the score is working properly: increases the score for every correct answer and decreases the score for every wrong answer. It also starts at 0 points when the player starts a new game;
-- the top score is working properly, it keeps the higher score when the player starts a new game;
-- the words randomly selected are showing properly.
+- the website name on the top left corner returns you to the home page;
+- the Categories dropdown menu shows all the available categories and, when clicked, shows all the recipes on the selected category;
+- the Recipes button opens the home page where all the recipes are shown;
+- the Log In button opens the log in page. In the log in page there is an option to go to the register page, if the user is an unregistered user. If the user inserts a wrong username or a wrong password a flash message is shown saying "Incorrect Username and/or Password";
+- the Register button opens the Register page. The register page has an log in option, if the user is already registered;
+- The "My Recipes" button directs the user to a page with all the the recipes added by the user;
+- The "Add Recipe" button returns a page were the user can add a new recipe;
+- The Manage Categories button directs the admin user to a page where the user can add new categories and delete existing categories.
 
 ### Browser compatibility
 The appearance and responsiveness of the website was tested with good results in 4 different web browsers: Microsoft Edge,
-Mozilla Firefox, Google Chrome and Opera. This website is not compatible with Internet Explorer because it uses promises that are not supported by IE.
+Mozilla Firefox, Google Chrome and Opera.
 
-### Testing User Stories
+<!-- ### Testing User Stories
 * As a regular user, I want a website responsive and good looking on all devices;
   - A regular user will find a website with a balanced design and a clear structure in whatever device he chooses to use.
 * As a regular user, I want a website easy to navigate;
@@ -203,17 +203,56 @@ Mozilla Firefox, Google Chrome and Opera. This website is not compatible with In
 * As a user I want to play a funny game;
   - The sound for correct or wrong answers make the game more fun, and the challenge of beating one's score makes the game funny and appealing.
 * As a user I want to repeat the experience and play again.
-  - When the game ends there is an option to play again. The game duration is only 30 seconds to make it more inviting to play "just one more" game.
+  - When the game ends there is an option to play again. The game duration is only 30 seconds to make it more inviting to play "just one more" game. -->
 
 ## Deployment
-To __deploy__ the project in GitHub I perform the following steps:
-- Log into my [GitHub](https://github.com/) account;
-- Choose the project "MP2_Translation-Game" on the Repositories;
-- Click on Settings;
-- Scroll down to the "GitHub Pages" section;
-- Inside the "GitHub Pages" section, click on the drop-down menu under Source and select Master Branch;
-- The page refreshes automatically and the website is now deployed.
-- The link to the webpage can be found in the GitHub Pages section.
+
+### Requirements for Deployments
+- Python
+- MongoDB Account
+- GitHub Account
+- Heroku Account
+
+### Initial Deployment
+
+To __deploy__ the project in Heroku I perform the following steps:
+- In my Gitpod terminal I use the command "pip3 freeze --local > requirements.txt" to create a file with the requirements.
+- After the file is created I open it and deleted the last line that was a blank line;
+- I checked that I have a .gitignore file in my repository and that file contains env.py and __pycache__/.
+- I created a env.py file. This file contains all the following information( with the updated values for the SECRET_KEY, MONGO_URI and MONGO_DBNAME):
+``` python
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", " MY SECRET_KEY")
+os.environ.setdefault("MONGO_URI", " MY MONGO_URI ")
+os.environ.setdefault("MONGO_DB", " MY MONGO_DBNAME ")
+```
+
+- I Logged in to [Heroku](https://www.heroku.com).
+- Selected 'Create New App' in the top right of the dashboard.
+- Chose a unique app name, and select the region closest to me, before clicking 'Create App'.
+- Went to the 'Deploy' tab, 'Deployment Method' and selected 'GitHub'.
+- Search to find my GitHub repository, and click 'Connect'.
+- Went to the 'Settings' tab, find 'Config Vars', and click 'Reveal Config Vars'.
+- Enter key value pairs that match those in the env.py file, displayed like this :
+
+| Key | Value |
+|---|---|
+| IP | 0.0.0.0 |
+| PORT | 5000 |
+| MONGO_DBNAME | ## MY DATABASE NAME ## |
+| MONGO_URI | ## MY MONGO_URI ## |
+| SECRET_KEY | ## MY SECRET_KEY ## |
+
+- Inthe 'Deploy' tab, click 'Enable Automatic Deployment'.
+- In 'Manual Deploy', choose master branch.
+- Click 'Deploy Branch' to deploy the app onto the Heroku servers.
+- Once the app has finished building, click 'Open App' to open the site.
+
+
+
 
 To run the code locally by __cloning__ the project from GitHub:
 - Log into my [GitHub](https://github.com/) account;
