@@ -63,7 +63,7 @@ The **Admin users** can see and search all the recipes and can filter the recipe
 The admin users' header is similar to the registered users header, but has a extra option to manage categories.
 
 The **Home** page has a section with a search bar, where the user can search for a recipe.
-Below the search bar there are up to 8 cards with recipes. There is a limit of 8 recipes per page, if the user wants to see more recipes, the user needs to go to the next page. Each card has the option of opening the recipe page, and the option to edit or delete the recipe, if the recipe was added by the user, or if the user is an admin user.
+Below the search bar there are up to 8 cards with recipes. The Home page is paginated and there is a limit of 8 cards per page.Each card has the option of opening the recipe page. If the user is an admin user, or if the recipe was added by the logged user, there are 2 additional options: edit or delete the recipe.
 
 The **My_recipes** page shows cards with the recipes added by the user. Each card has tree options:
 - View recipe;
@@ -94,7 +94,7 @@ On the bottom of the page there are two buttons:
 - one edit button that will save the changes, edit the recipe and return to the user's my_recipe page;
 - one cancel button that will return the user to the home page without saving the changes.
 
-The **Register** page has a
+The **Register** and the **Log In** page have a similar format, with a place to insert the username and a place to insert the password.
 
 It was used defensive programming on the delete function (both delete recipe and delete category). A category or a recipe can't be deleted with just one click, the user needs to confirm that he really wants to delete the item, to avoid unintencional actions from the user.
 
@@ -145,11 +145,9 @@ It was used defensive programming on the delete function (both delete recipe and
 ---
 ## Testing
 ### Code Validators
-- [HTML Validator](https://validator.w3.org/#validate_by_input) (via direct input path):
-  - Home (index.html) - No errors or warnings:
-  ![Home Page HTML Validator](readme-images/val-html-index.png)
-  - Game (game.html) - No errors or warnings:
-  ![Portfolio Page HTML Validator](readme-images/val-html-game.png)
+- [HTML Validator](https://validator.w3.org/):
+  - The Home page, log in and register were checked by adress and no errors or warnings were found.
+  - All the other pages were checked via direct input and the only errors and warnings detected were due to the use of jinja language.
   
 - [CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) (via direct input path):
   - No errors found:
@@ -158,6 +156,10 @@ It was used defensive programming on the delete function (both delete recipe and
 - [JavaScript Validator](https://jshint.com/):
   - No errors found:
 ![JavaScript validator](readme-images/val-js.png)
+
+- [Python PEP8 Validator](http://pep8online.com/):
+  - No errors found:
+![[Python Validator](readme-images/val-python.png)
 
 ### Responsiveness of the website
 It was used [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) and
