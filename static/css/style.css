@@ -139,3 +139,9 @@ li.cat-list {
 .page-footer {
     padding-top: 10px;
 }
+
+footer {
+    margin: auto;
+    /* height: 330px; */
+    text-align:center;
+}
