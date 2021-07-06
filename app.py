@@ -65,8 +65,6 @@ def search():
     categories = mongo.db.categories.find()
     recipes_paginated = paginated(recipes)
     pagination = pagination_args(recipes)
-    flash(query)
-    flash(page)
     return render_template("recipes.html", recipes=recipes_paginated,
                            categories=categories,
                            pagination=pagination)
@@ -145,6 +143,10 @@ def login():
 # --- User's recipes
 @app.route("/my_recipes/<username>")
 def my_recipes(username):
+    # display error message if not user
+    if not session.get("user"):
+        return render_template("404.html")
+
     # grabe the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -201,6 +203,9 @@ def recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    # display error message if not user
+    if not session.get("user"):
+        return render_template("404.html")
     if request.method == "POST":
         submit = {
             "category_name": request.form.getlist("category_name"),
@@ -234,6 +239,9 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
+    # display error message if not user
+    if not session.get("user"):
+        return render_template("404.html")
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
     return redirect(url_for("get_recipes"))
@@ -278,6 +286,7 @@ def internal_error(error):
 @app.errorhandler(403)
 def internal_error(error):
     return render_template('403.html'), 403
+
 
 # --- Run the app
 if __name__ == "__main__":

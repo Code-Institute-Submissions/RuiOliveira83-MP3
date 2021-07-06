@@ -1,36 +1,23 @@
+/* ------------ Generic format for background color and font family */
 body {
     background-color: #dcc7aa;
     width:auto;
     font-family: 'Baloo Tammudu 2', sans-serif;
 }
 
-.brand-logo {
-    margin-left: 15px;
-    margin-top: 8px;
-}
-
-.text-shadow {
-    text-shadow: 2px 2px 2px rgb(0 0 0 / 50%);
-}
-
-.text-shadow-not {
-    text-shadow: none;
-}
-
-.text-lobster{
-    font-family: 'Lobster';
-}
-
+/* ------------ Colours */
 .sidenav.right-aligned {
     background-color: #dccdb8;
 }
 
-.text-heavy{
-    font-weight: 500;
+.pagination li.active a {
+    background-color: orange;
 }
 
-.text-large {
-    font-size: 150%;
+/* ------------ Margins, Paddings */
+.brand-logo {
+    margin-left: 15px;
+    margin-top: 8px;
 }
 
 .flashes h4 {
@@ -43,8 +30,12 @@ body {
     }
 }
 
-.text-uppercase {
-    text-transform: uppercase;
+.recipe-description{
+    padding: 15px 0px;
+}
+
+.card-panel {
+    margin-top: 14px;
 }
 
 .btn-center-align{
@@ -56,11 +47,72 @@ li.cat-list {
     padding-top: 15px;   
 }
 
+.btn-margin {
+    margin: 15px;
+}
+
+.dropdown-content {
+    top: -65px;
+}
+
+.padding-top-8 {
+    padding-top: 8px;
+}
+
+.btn-left-margin{
+    margin-left: 20px !important;
+}
+
+.modal-new-cat {
+    padding: 15px 15px 5px !important;
+    width: 90%;
+}
+
+.btn-categories {
+    margin: 5px 40px 20px 0px;
+}
+
+/* ------------ Text */
+.text-shadow {
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 50%);
+}
+
+.text-shadow-not {
+    text-shadow: none;
+}
+
+.text-lobster{
+    font-family: 'Lobster', sans-serif;
+}
+
+.text-heavy{
+    font-weight: 500;
+}
+
+.text-large {
+    font-size: 150%;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.cat-card {
+    font-size: x-large;
+    font-weight: 400;
+}
+
+.card .card-title {
+    font-size: 40px;
+    font-weight: 400;
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 50%);
+}
+
+/* ------------ Image */
 .card-image {
     padding: 15px 5px;
     max-width: 100%;
     height: auto;
-    /* width: fit-content; */
     max-height: 280px !important;
     display: block;
     margin-left: auto;
@@ -75,58 +127,11 @@ li.cat-list {
     width: auto;
 }
 
-.recipe-description{
-    padding: 15px 0px;
-}
-
-.card-panel {
-    margin-top: 14px;
-}
-
-.cat-card {
-    font-size: x-large;
-    font-weight: 400;
-}
-
-.modal-new-cat {
-    padding: 15px 15px 5px !important;
-    width: 90%;
-}
-
-.btn-left-margin{
-    margin-left: 20px !important;
-}
-
-.card .card-title {
-    font-size: 40px;
-    font-weight: 400;
-    text-shadow: 2px 2px 2px rgb(0 0 0 / 50%);
-}
-
-.btn-margin {
-    margin: 15px;
-}
-
-.dropdown-content {
-    top: -65px;
-}
-
-.pagination li.active a {
-    background-color: orange;
-}
-
 .card.large {
     height: 460px;
 }
 
-.btn-categories {
-    margin: 5px 40px 20px 0px;
-}
-
-.padding-top-8 {
-    padding-top: 8px;
-}
-
+/* ------------ Footer */
 .footer-social-media li {
     display: inline-block;
     padding-right: 20px;
@@ -142,6 +147,5 @@ li.cat-list {
 
 footer {
     margin: auto;
-    /* height: 330px; */
     text-align:center;
 }
