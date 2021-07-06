@@ -1,6 +1,6 @@
 # [The Sweet Project](https://ruioliveira83.github.io/MP3)
 ![Responsiveness](readme-images/amiresponsive.png)
-The main purpose of this project is to create a full-stack website where the community can share and search dessert recipes in a easy to navigate and clean looking website, using HTML, CSS, JavaScript, Python, Flask and MongoDB.
+The main purpose of this project is to create a full-stack website where the community can share and search dessert recipes in an easy to navigate and clean looking website, using HTML, CSS, JavaScript, Python, Flask and MongoDB.
 This website is my third milestone project for the diploma in software development from the [code institute](https://codeinstitute.net). 
 A live view of this website can be found here: [The Sweet Project](https://sweet-recipes-project.herokuapp.com/).
 
@@ -13,12 +13,12 @@ A live view of this website can be found here: [The Sweet Project](https://sweet
 * As a regular user, I want to see and get inspired by dessert recipes;
 * As a regular user, I want to be able to search recipes;
 * As a regular user, I want to see all the recipes in each category;
-* As a registered user, I want to have all the funcionalities of a regular user and some extra functionalities;
+* As a registered user, I want to have all the functionalities of a regular user and some extra functionalities;
 * As a registered user, I want to make use of CRUD (create, read, update and delete) for my recipes;
 * As a registered user, I want to quickly see all my recipes;
-* As a Admin user, I want to have all the funcionalities of a registered user and some extra functionalities;
-* As a Admin member, I want to be to make use of CRUD (create, read, update and delete) for all recipes; 
-* As a Admin member, I want to be to make use of CRUD (create, read, update and delete) for the categories; 
+* As an Admin user, I want to have all the functionalities of a registered user and some extra functionalities;
+* As an Admin member, I want to be to make use of CRUD (create, read, update and delete) for all recipes; 
+* As an Admin member, I want to be to make use of CRUD (create, read, update and delete) for the categories; 
 
 
 ### Wireframes
@@ -36,7 +36,7 @@ It was used [Balsamiq](https://balsamiq.com/) to create the following wireframes
 ---
 ## Features
 ### Existing Features
-The users of this website can be divided in 3 categories: **Unregistered user**, **Registered user** and **Admin**.
+The users of this website can be divided into 3 categories: **Unregistered user**, **Registered user** and **Admin**.
 All pages of this website share the same footer, this footer allows the user to go to the social media pages of this brand.
 
 The **Unregistered users** can see and search all the recipes and can filter the recipes by category.
@@ -60,12 +60,12 @@ The **Admin users** can see and search all the recipes and can filter the recipe
 **Admin users** can add new recipes.
 **Admin users** can edit and delete all the recipes.
 **Admin users** can add new categories and delete categories.
-The admin users' header is similar to the registered users header, but has a extra option to manage categories.
+The admin users' header is similar to the registered users' header but has an extra option to manage categories.
 
 The **Home** page has a section with a search bar, where the user can search for a recipe.
-Below the search bar there are up to 8 cards with recipes. The Home page is paginated and there is a limit of 8 cards per page.Each card has the option of opening the recipe page. If the user is an admin user, or if the recipe was added by the logged user, there are 2 additional options: edit or delete the recipe.
+Below the search bar, there are up to 8 cards with recipes. The Home page is paginated and there is a limit of 8 cards per page. Each card has the option of opening the recipe page. If the user is an admin user, or if the recipe was added by the logged user, there are 2 additional options: edit or delete the recipe.
 
-The **My_recipes** page shows cards with the recipes added by the user. Each card has tree options:
+The **My_recipes** page shows cards with the recipes added by the user. Each card has three options:
 - View recipe;
 - Delete Recipe;
 - Edit Recipe.
@@ -78,7 +78,7 @@ The **Recipe** page has:
 - A recipe description;
 - The recipe ingredients;
 - The recipe method;
-- If the recipe was added by the user there will be 2 buttons on the bottom that allow the user to edit or to delete the recipe.
+- If the recipe was added by the user there will be 2 buttons on the bottom that allow the user to edit or delete the recipe.
 
 The **Add Recipe** page has a form where the user can add:
 - Recipe's name;
@@ -87,16 +87,16 @@ The **Add Recipe** page has a form where the user can add:
 - Recipe's Ingredients;
 - Recipe's Method;
 - Recipe image's URL.
-On the bottom of the page there is a button to add the recipe to the database.
+At the bottom of the page, there is a button to add the recipe to the database.
 
-The **Edit Recipe** page has the same form as in the edit recipe, but the form is pre filled with the information to be edited.
-On the bottom of the page there are two buttons:
+The **Edit Recipe** page has the same form as in the edit recipe, but the form is pre-filled with the information to be edited.
+At the bottom of the page there are two buttons:
 - one edit button that will save the changes, edit the recipe and return to the user's my_recipe page;
 - one cancel button that will return the user to the home page without saving the changes.
 
 The **Register** and the **Log In** page have a similar format, with a place to insert the username and a place to insert the password.
 
-It was used defensive programming on the delete function (both delete recipe and delete category). A category or a recipe can't be deleted with just one click, the user needs to confirm that he really wants to delete the item, to avoid unintencional actions from the user.
+It was used defensive programming on the delete function (both delete recipe and delete category). A category or a recipe can't be deleted with just one click, the user needs to confirm that he wants to delete the item, to avoid unintentional actions from the user.
 
 ---
 ## Technologies Used
@@ -146,7 +146,7 @@ It was used defensive programming on the delete function (both delete recipe and
 ## Testing
 ### Code Validators
 - [HTML Validator](https://validator.w3.org/):
-  - The Home page, log in and register were checked by adress and no errors or warnings were found.
+  - The Home page, login and register were checked by address and no errors or warnings were found.
   - All the other pages were checked via direct input and the only errors and warnings detected were due to the use of jinja language.
   
 - [CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) (via direct input path):
@@ -168,17 +168,17 @@ It was used [Chrome DevTools](https://developers.google.com/web/tools/chrome-dev
 
 ![Responsiveness](readme-images/responsiveness.png)
 
-The website structure adapts well to all used screen size.
+The website structure adapts well to all used screen sizes.
 
 ### Functionality of the website
 The responsiveness of all pages was tested:
 - the website name on the top left corner returns you to the home page;
 - the Categories dropdown menu shows all the available categories and, when clicked, shows all the recipes on the selected category;
 - the Recipes button opens the home page where all the recipes are shown;
-- the Log In button opens the log in page. In the log in page there is an option to go to the register page, if the user is an unregistered user. If the user inserts a wrong username or a wrong password a flash message is shown saying "Incorrect Username and/or Password";
-- the Register button opens the Register page. The register page has an log in option, if the user is already registered;
-- The "My Recipes" button directs the user to a page with all the the recipes added by the user;
-- The "Add Recipe" button returns a page were the user can add a new recipe;
+- the LogIn button opens the login page. On the login page, there is an option to go to the register page if the user is unregistered. If the user inserts a wrong username or a wrong password a flash message is shown saying "Incorrect Username and/or Password";
+- the Register button opens the Register page. The register page has a log in option if the user is already registered;
+- The "My Recipes" button directs the user to a page with all the recipes added by the user;
+- The "Add Recipe" button returns a page where the user can add a new recipe;
 - The Manage Categories button directs the admin user to a page where the user can add new categories and delete existing categories.
 
 ### Browser compatibility
@@ -196,15 +196,15 @@ Mozilla Firefox, Google Chrome and Opera.
   - There's a search bar on top of the home page where the user can search for recipes. It will search words on the ingredients, title and category.
 * As a regular user, I want to see all the recipes in each category;
   - A user can select a category using the header's dropdown menu or, when it's in the recipe page, clicking on the shown category, and the user will be directed to a page with all the recipes for that category.
-* As a registered user, I want to have all the funcionalities of a regular user and some extra functionalities;
-  - A registered user can do everything a unregistered user can. 
+* As a registered user, I want to have all the functionalities of a regular user and some extra functionalities;
+  - A registered user can do everything an unregistered user can. 
 * As a registered user, I want to make use of CRUD (create, read, update and delete) for my recipes;
   - A registered user can add a new recipe using the link on the header. The user can edit and delete a recipe, as long as the recipe was added by the user. The user can edit and delete a recipe using the links located on the bottom of the recipe cards or using the buttons located on the bottom of the recipe page.
 * As a registered user, I want to quickly see all my recipes;
   - When a registered user clicks on "My Recipes" the user is redirected to a page with all the recipes the user added.
-* As a Admin user, I want to have all the funcionalities of a registered user and some extra functionalities.
-  - A Admin user can do everything a regitered user can.
-* As a Admin user, I want to be to make use of CRUD (create, read, update and delete) for all recipes;
+* As an Admin user, I want to have all the functionalities of a registered user and some extra functionalities.
+  - An Admin user can do everything a registered user can.
+* As an Admin user, I want to be to make use of CRUD (create, read, update and delete) for all recipes;
   - An Admin can read, edit and delete all the recipes, not only the recipes added by the Admin user.
 * As a Admin user, I want to be to make use of CRUD (create, read, update and delete) for the categories; 
   - An Admin user can create new categories or delete existing categories using the link "Manage Categories" located on the header.
@@ -223,7 +223,7 @@ To __deploy__ the project in Heroku I perform the following steps:
 - In my Gitpod terminal I use the command "pip3 freeze --local > requirements.txt" to create a file with the requirements.
 - After the file is created I open it and deleted the last line that was a blank line;
 - I checked that I have a .gitignore file in my repository and that file contains env.py and __pycache__/.
-- I created a env.py file. This file contains all the following information( with the updated values for the SECRET_KEY, MONGO_URI and MONGO_DBNAME):
+- I created an env.py file. This file contains all the following information( with the updated values for the SECRET_KEY, MONGO_URI and MONGO_DBNAME):
 ``` python
 import os
 
@@ -250,8 +250,8 @@ os.environ.setdefault("MONGO_DB", " MY MONGO_DBNAME ")
 | MONGO_URI | ## MY MONGO_URI ## |
 | SECRET_KEY | ## MY SECRET_KEY ## |
 
-- Inthe 'Deploy' tab, click 'Enable Automatic Deployment'.
-- In 'Manual Deploy', choose master branch.
+- In the 'Deploy' tab, click 'Enable Automatic Deployment'.
+- In 'Manual Deploy', choose the master branch.
 - Click 'Deploy Branch' to deploy the app onto the Heroku servers.
 - Once the app has finished building, click 'Open App' to open the site.
 
@@ -259,7 +259,7 @@ os.environ.setdefault("MONGO_DB", " MY MONGO_DBNAME ")
 - Log in to GitHub;
 - Go to https://github.com/RuiOliveira83/MP3
 - Click on "Fork" - top right side;
-- Create a env.py with your own values and create a MongoDB database with the data keys and types as shown above;
+- Create an env.py with your values and create a MongoDB database with the data keys and types as shown above;
 - Install all the project requirements. The information on the project requirements can be found on requirements.txt and this can be done with the command `pip3 install -r requirements.txt`.
 
 ### How to Fork the project:
@@ -270,7 +270,7 @@ To run the code locally by __cloning__ the project from GitHub:
 - Open repository or create a new repository;
 - Open terminal;
 - Type *git clone* followed by the copied URL and press Enter.
-- Create an env.py file with your own values, create a MongoDB database with the data keys and types as shown above.
+- Create an env.py file with your values, create a MongoDB database with the data keys and types as shown above.
 - Install all of the project requirements as shown above.
 
 ---
