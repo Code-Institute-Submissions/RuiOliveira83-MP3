@@ -218,15 +218,10 @@ def edit_recipe(recipe_id):
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
-        recipes = list(mongo.db.recipes.find({'added_by': username}))
-        recipes_paginated = paginated(recipes)
-        pagination = pagination_args(recipes)
         categories = list(mongo.db.categories.find().sort("category_name", 1))
+        recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
         return render_template(
-            "my_recipes.html", recipes=recipes_paginated,
-            username=username, categories=categories, pagination=pagination)
+            "recipe.html", recipe=recipe, categories=categories)
 
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
