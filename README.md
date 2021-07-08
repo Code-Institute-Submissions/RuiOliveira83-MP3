@@ -14,11 +14,16 @@ A live view of this website can be found here: [The Sweet Project](https://sweet
 * As a regular user, I want to be able to search recipes;
 * As a regular user, I want to see all the recipes in each category;
 * As a registered user, I want to have all the functionalities of a regular user and some extra functionalities;
-* As a registered user, I want to make use of CRUD (create, read, update and delete) for my recipes;
+* As a registered user, I want to add new recipes;
+* As a registered user, I want to be able to edit my recipes;
+* As a registered user, I want to be able to delete my recipes;
 * As a registered user, I want to quickly see all my recipes;
 * As an Admin user, I want to have all the functionalities of a registered user and some extra functionalities;
-* As an Admin member, I want to be to make use of CRUD (create, read, update and delete) for all recipes; 
-* As an Admin member, I want to be to make use of CRUD (create, read, update and delete) for the categories; 
+* As an Admin member, I want to be able to edit any recipes;
+* As an Admin member, I want to be able to delete any recipes;
+* As an Admin member, I want to check what categories are available;
+* As an Admin member, I want to be able to add a category;
+* As an Admin member, I want to be able to delete a category;
 
 
 ### Wireframes
@@ -198,16 +203,26 @@ Mozilla Firefox, Google Chrome and Opera.
   - A user can select a category using the header's dropdown menu or, when it's in the recipe page, clicking on the shown category, and the user will be directed to a page with all the recipes for that category.
 * As a registered user, I want to have all the functionalities of a regular user and some extra functionalities;
   - A registered user can do everything an unregistered user can. 
-* As a registered user, I want to make use of CRUD (create, read, update and delete) for my recipes;
-  - A registered user can add a new recipe using the link on the header. The user can edit and delete a recipe, as long as the recipe was added by the user. The user can edit and delete a recipe using the links located on the bottom of the recipe cards or using the buttons located on the bottom of the recipe page.
+* As a registered user, I want to add new recipes;
+  - A registered user can add a new recipe using the link on the header.
+* As a registered user, I want to be able to edit my recipes;
+  - A registered user can edit all the recipes added by the user. The user can edit a recipe using the link located on the bottom of the recipe cards or using the button located on the bottom of the recipe page.
+* As a registered user, I want to be able to delete my recipes;
+  - A registered user can delete all the recipes added by the user. The user can do it using the link located on the bottom of the recipe cards or using the button located on the bottom of the recipe page.
 * As a registered user, I want to quickly see all my recipes;
-  - When a registered user clicks on "My Recipes" the user is redirected to a page with all the recipes the user added.
+  - When a registered user clicks on "My Recipes" the user is redirected to a page with all the recipes added by the user.
 * As an Admin user, I want to have all the functionalities of a registered user and some extra functionalities.
   - An Admin user can do everything a registered user can.
-* As an Admin user, I want to be to make use of CRUD (create, read, update and delete) for all recipes;
-  - An Admin can read, edit and delete all the recipes, not only the recipes added by the Admin user.
-* As a Admin user, I want to be to make use of CRUD (create, read, update and delete) for the categories; 
-  - An Admin user can create new categories or delete existing categories using the link "Manage Categories" located on the header.
+* As an Admin member, I want to be able to edit any recipe;
+  - An Admin edit any recipes, not only the recipes added by the Admin user. The Admin can do it using the link located on the bottom of the recipe cards.
+* As an Admin member, I want to be able to delete any recipes;
+  - An Admin can delete any recipe, not only the recipes added by the Admin user. The Admin can do it using the link located at the bottom of the recipe cards.
+* As an Admin member, I want to check what categories are available;
+   - An Admin user can check which categories exist using the dropdown menu on the header or going to the **"Manage categories"** page using the link on the header;
+* As an Admin member, I want to be able to add a category;
+  - On the **"Manage categories"** page the Admin user can add a new category by using the button located on the bottom of the page.
+* As an Admin member, I want to be able to delete a category;
+- On the **"Manage categories"** page all the categories are displayed in cards. Those cards have a link that allows the Admin user to delete the category.
 
 ## Deployment
 
