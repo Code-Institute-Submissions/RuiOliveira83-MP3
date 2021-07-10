@@ -5,6 +5,33 @@ This website is my third milestone project for the diploma in software developme
 A live view of this website can be found here: [The Sweet Project](https://sweet-recipes-project.herokuapp.com/).
 
 ---
+## Index
+* [UX](#ux)
+  - [User Stories](#user-stories)
+  - [Wireframes](#wireframes)
+* [Features](#features)
+  - [Existing Features](#existing-features)
+* [Technologies Used](#tecnologies-used)
+  - [Languages Used](#[languages-used)
+  - [Frameworks and Libraries Used](#frameworks-and-libraries-used)
+* [Testing](#testing)
+  - [Code Validators](#code-validators)
+  - [Responsiveness of the website](#responsiveness-of-the-website)
+  - [Functionality of the website](#functionality-of-the-website)
+  - [Browser compatibility](#browser-compatibility)
+  - [Testing User Stories](#testing-user-stories)
+* [Deployment](#deployment)
+  - [Requirements for Deployments](#requirements-for-deployments)
+  - [Initial Deployment](#initial-deployment)
+  - [How to Fork the project](#how-to-fork-the-project)
+  - [How to Clone the project](#how-to-clone-the-project)
+* [Credits](#credits)
+  - [Content](#content)
+  - [Acknowledgements](#acknowledgements)
+
+---
+
+
 ## UX
 
 ### User Stories
@@ -277,7 +304,7 @@ os.environ.setdefault("MONGO_DB", " MY MONGO_DBNAME ")
 - Create an env.py with your values and create a MongoDB database with the data keys and types as shown above;
 - Install all the project requirements. The information on the project requirements can be found on requirements.txt and this can be done with the command `pip3 install -r requirements.txt`.
 
-### How to Fork the project:
+### How to Clone the project:
 To run the code locally by __cloning__ the project from GitHub:
 - Log into your [GitHub](https://github.com/) account;
 - Find and choose the Repository for this project (RuiOliveira83/MP3);
