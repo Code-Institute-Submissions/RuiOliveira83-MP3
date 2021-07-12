@@ -15,7 +15,7 @@
         <!-- Css -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
         <!-- Favicon image link -->
-        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">  
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">  
         {% block styles %}
         {% endblock %}
         <title>Sweet Project</title>
