@@ -31,8 +31,6 @@ A live view of this website can be found here: [The Sweet Project](https://sweet
   - [Acknowledgements](#acknowledgements)
 
 ---
-
-
 ## UX
 
 ### User Stories
@@ -53,7 +51,6 @@ A live view of this website can be found here: [The Sweet Project](https://sweet
 * As an Admin member, I want to be able to add a category;
 * As an Admin member, I want to be able to delete a category;
 
-
 ### Wireframes
 It was used [Balsamiq](https://balsamiq.com/) to create the following wireframes:
 | Desktop                                                        | Tablet and Mobile                                             |
@@ -68,6 +65,7 @@ It was used [Balsamiq](https://balsamiq.com/) to create the following wireframes
 
 ---
 ## Features
+
 ### Existing Features
 The users of this website can be divided into 3 categories: **Unregistered user**, **Registered user** and **Admin**.
 All pages of this website share the same footer, this footer allows the user to go to the social media pages of this brand.
@@ -146,6 +144,7 @@ It was used defensive programming on the delete function (both delete recipe and
   - The programming language used to make the web page interactive.
 - [Python (including Jinja)](https://www.python.org/)
   - The programming language used to build the backend functionality.
+
 ### Frameworks and Libraries Used
 - [Gitpod](https://gitpod.io/)
   - IDE (Integrated Development Environment) used to develop this project.
@@ -180,6 +179,7 @@ It was used defensive programming on the delete function (both delete recipe and
 
 ---
 ## Testing
+
 ### Code Validators
 - [HTML Validator](https://validator.w3.org/):
   - The Home page, login and register were checked by address and no errors or warnings were found.
@@ -255,11 +255,12 @@ Mozilla Firefox, Google Chrome and Opera.
 * As an Admin member, I want to be able to delete a category;
 - On the **"Manage categories"** page all the categories are displayed in cards. Those cards have a link that allows the Admin user to delete the category.
 
+---
 ## Deployment
 
 ### Requirements for Deployments
 - Python
-- MongoDB Account
+- MongoDB Account and database
 - GitHub Account
 - Heroku Account
 
@@ -321,6 +322,7 @@ To run the code locally by __cloning__ the project from GitHub:
 
 ---
 ## Credits
+
 ### Content
 - Home Page:
 
