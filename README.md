@@ -11,8 +11,9 @@ A live view of this website can be found here: [The Sweet Project](https://sweet
   - [Wireframes](#wireframes)
 * [Features](#features)
   - [Existing Features](#existing-features)
-* [Technologies Used](#tecnologies-used)
-  - [Languages Used](#[languages-used)
+  - [Features to be Implemented in the Future](#features-to-be-implemented-in-the-future)
+* [Technologies Used](#technologies-used)
+  - [Languages Used](#languages-used)
   - [Frameworks and Libraries Used](#frameworks-and-libraries-used)
 * [Testing](#testing)
   - [Code Validators](#code-validators)
@@ -130,6 +131,9 @@ The **Register** and the **Log In** page have a similar format, with a place to 
 
 It was used defensive programming on the delete function (both delete recipe and delete category). A category or a recipe can't be deleted with just one click, the user needs to confirm that he wants to delete the item, to avoid unintentional actions from the user.
 
+### Features to be Implemented in the Future
+- Add a favourite recipes page to allow the users to favourite some recipes and see all the recipes on one page.
+- Associate this page to a brand of kitchenware.
 ---
 ## Technologies Used
 
