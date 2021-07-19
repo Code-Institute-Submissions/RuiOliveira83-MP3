@@ -317,8 +317,18 @@ To run the code locally by __cloning__ the project from GitHub:
 - Open repository or create a new repository;
 - Open terminal;
 - Type *git clone* followed by the copied URL and press Enter.
-- Create an env.py file with your values, create a MongoDB database with the data keys and types as shown above.
-- Install all of the project requirements as shown above.
+- Create an env.py file with your values, create a MongoDB database with the data keys and types as shown:
+``` python
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", " YOUR SECRET_KEY")
+os.environ.setdefault("MONGO_URI", " YOUR MONGO_URI ")
+os.environ.setdefault("MONGO_DB", " YOUR MONGO_DBNAME ")
+```
+- Install all of the project requirements with the command `pip3 install -r requirements.txt` on your terminal.
+- Run the app by typing `python3 app.py` on your terminal
 
 ---
 ## Credits
