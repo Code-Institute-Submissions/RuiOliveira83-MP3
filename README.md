@@ -21,6 +21,7 @@ A live view of this website can be found here: [The Sweet Project](https://sweet
   - [Functionality of the website](#functionality-of-the-website)
   - [Browser compatibility](#browser-compatibility)
   - [Testing User Stories](#testing-user-stories)
+  - [Bugs](#bugs)
 * [Deployment](#deployment)
   - [Requirements for Deployments](#requirements-for-deployments)
   - [Initial Deployment](#initial-deployment)
@@ -254,6 +255,18 @@ Mozilla Firefox, Google Chrome and Opera.
   - On the **"Manage categories"** page the Admin user can add a new category by using the button located on the bottom of the page.
 * As an Admin member, I want to be able to delete a category;
 - On the **"Manage categories"** page all the categories are displayed in cards. Those cards have a link that allows the Admin user to delete the category.
+
+### Bugs
+* It was possible for a logged in user to log in again by changing the url:
+  - This bug was solved by adding an if statement in the **"login.html"** page insuring that only non logged in user can log in.
+* It was possible for a logged in user to register again by changing the url:
+  - This bug was solved by adding an if statement in the **"register.html"** page insuring that only non logged in user can register.
+* It was possible for a non logged in user to add a recipe by changing the url:
+  - This bug was solved by adding an if statement in the **"add_recipe.html"** page insuring that the user is logged in.
+* It was possible for a non logged in user to edit a recipe by changing the url:
+  - This bug was solved by adding an if statement in the **"edit_recipe.html"** page insuring that only the admin user and the recipe creator can edit the recipe.
+* It was possible for a non logged in user to delete a recipe by changing the url:
+  - This bug was solved by adding an if statement in the **"app.py"** file inside the delete_recipe function returning the page **"404.html"** if the user is not logged in.
 
 ---
 ## Deployment
