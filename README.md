@@ -267,6 +267,8 @@ Mozilla Firefox, Google Chrome and Opera.
   - This bug was solved by adding an if statement in the **"edit_recipe.html"** page insuring that only the admin user and the recipe creator can edit the recipe.
 * It was possible for a non logged in user to delete a recipe by changing the url:
   - This bug was solved by adding an if statement in the **"app.py"** file inside the delete_recipe function returning the page **"404.html"** if the user is not logged in.
+* When the user tried to delete a recipe inside **my_recipes.html** page, the first recipe of the list was deleted, instead of the selected recipe.
+  - This bug was due the utilization of a modal without the proper modal id. To solve it, it was used the recipe.id as a **href**, this way the deleted recipe is the selected one.
 
 ---
 ## Deployment
